@@ -1,10 +1,9 @@
 <?php
-    include("db_connect.php");
+    
 ?>
 <body>
 <?php
-    include("header.php");
-    include("menu.php");
+    
 ?>
     <h1> Student List </h1>
     <table border="1" align="center" cellspacing="0" cellpadding="10">
