@@ -43,8 +43,8 @@
             if(mysqli_num_rows($query) > 0) {
                 echo "<script> alert('Student already exists'); </script>";
             } else {
-                $sql = "INSERT INTO students (lastname, name, role) VALUES ('$lastname', '$name','$role',)";
-                $query = mysqli_query($conn, $sql);
+                $sql = "INSERT INTO personnel (lastname, name, role) VALUES ('$lastname', '$name','$role',) ";
+                $query = mysqli_query($conn, $sql);   
                 if($query) {
                     echo "<script> alert('personnel inserted successfully'); window.location='personnel.php';</script>";
                 } else {
