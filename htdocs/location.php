@@ -1,8 +1,15 @@
 <html style="background: url(https://static.vecteezy.com/system/resources/thumbnails/009/213/272/small_2x/healthcare-and-medical-background-with-cardiogram-line-free-vector.jpg);" style="background-size: 200;">
 <head>
-	
+
+<?php
+    include("db_connection.php");
+?>
 </head>
 <body>
+<?php
+    
+    include("menu.php");
+?>
 
 <h1>location</h1>
 <table cellpadding="15" align="center" width="70%" border="5">
