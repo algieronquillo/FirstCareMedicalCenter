@@ -1,10 +1,9 @@
-<he<html style="background: url(https://static.vecteezy.com/system/resources/thumbnails/009/213/272/small_2x/healthcare-and-medical-background-with-cardiogram-line-free-vector.jpg);" style="background-size: 200;">
-ad>
+<html style="background: url(https://static.vecteezy.com/system/resources/thumbnails/009/213/272/small_2x/healthcare-and-medical-background-with-cardiogram-line-free-vector.jpg);" style="background-size: 200;">
+<head>
 <?php
     include("db_connection.php");
 ?>
-    
-</head>
+</head>  
 
 <body>
 <?php
