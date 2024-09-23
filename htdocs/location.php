@@ -7,7 +7,8 @@
 </head>
 <body>
 <?php
-    
+        include("style.php");
+
     include("menu.php");
 ?>
 

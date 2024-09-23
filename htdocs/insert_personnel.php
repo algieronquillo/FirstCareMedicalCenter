@@ -6,7 +6,7 @@
 </head>
 <body>
 <?php
-    
+    include("style.php");
     include("menu.php");
 ?>
     <h1> Insert Students </h1>

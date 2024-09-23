@@ -7,6 +7,8 @@
 
 <body>
 <?php
+    include("style.php");
+
     include("menu.php");
 ?>
      <h1>personnel</h1>
@@ -121,6 +123,23 @@
 			<td>Neurologist</td>
 		
 		</tr>
+
+		<?php 
+        $sql = "SELECT * FROM medical_staff";
+        $query = mysqli_query($conn, $sql);
+        if(!$query) {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        } else {
+            while($result = mysqli_fetch_assoc($query)) {
+                echo "<tr>";
+                echo "<td>" . $result["lastname"] . "</td>";
+                echo "<td>" . $result["firstname"] . ", " . $result['role'] . "</td>";
+                echo "<td>" . ($result["role"] === 'D' ? 'Doctor' : ($result["role"] === 'N' ? 'Nurse' : ($result["role"] === 'P' ? 'Pharmacist' : 'Lab Technician'))) . "</td>";
+                echo "</tr>";
+            }
+        }
+?>
+
 </body>
 
 </html>

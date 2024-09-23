@@ -35,7 +35,8 @@
 
         nav a:hover {
             background-color: #ddd;
-            color: black;
+            color: red;
         }
+        
     </style>
 </head>
