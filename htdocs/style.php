@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +26,7 @@
         }
 
         nav a {
-            display: red ;
+            display: WHITE ;
             color: white;
             text-align: center;
             padding: 14px 16px;

@@ -1,4 +1,4 @@
-<html style="background: url(https://static.vecteezy.com/system/resources/thumbnails/009/213/272/small_2x/healthcare-and-medical-background-with-cardiogram-line-free-vector.jpg);" style="background-size: 200;">
+<html style="background: url(9/213/272/small_2x/healthcare-and-medical-background-with-cardiogram-line-free-vector.jpg);" style="background-size: 200;">
 <head>
 
 <?php
@@ -35,21 +35,7 @@
         <td>Davao City</td>
        <td>Cebu Doctors' University Hospital</td>
      </tr>  
-     <?php 
-        $sql = "SELECT * FROM location ";
-        $query = mysqli_query($conn, $sql);
-        if(!$query) {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        } else {
-            while($result = mysqli_fetch_assoc($query)) {
-                echo "<tr>";
-                echo "<td>" . $result["City"] . "</td>";
-                echo "<td>" . $result["Address"] . "</td>";
-                echo "</tr>";
-            }
-        }
-    ?>
-
+    
 
 
 </body>
