@@ -125,8 +125,8 @@
 		</tr>
 
 		<?php 
-        $sql = "SELECT * FROM medical_staff";
-        $query = mysqli_query($conn, $sql);
+        $sql = "SELECT * FROM personnel";
+		$query = mysqli_query($conn, $sql);
         if(!$query) {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         } else {
@@ -141,5 +141,4 @@
 ?>
 
 </body>
-
 </html>

@@ -35,5 +35,35 @@
         <td>Davao City</td>
        <td>Cebu Doctors' University Hospital</td>
      </tr>  
+     <?php 
+    // Database connection
+    $conn = mysqli_connect("localhost", "my_username", "my_password", "my_database");
+    
+    // Check if connection is successful
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    // Query to select data from the location table
+    $sql = "SELECT * FROM location";
+    $query = mysqli_query($conn, $sql);
+
+    // Error handling
+    if (!$query) {
+        echo "Error: " . mysqli_error($conn);
+    } else {
+        // Check if there are any results
+        if (mysqli_num_rows($query) > 0) {
+            while ($result = mysqli_fetch_assoc($query)) {
+                echo "<tr>";
+                echo "<td>" . htmlspecialchars($result["City"]) . "</td>";
+                echo "<td>" . htmlspecialchars($result["Address"]) . "</td>";
+                echo "</tr>";
+            }
+        }
+    ?>
+
+
+
 </body>
 </html>
