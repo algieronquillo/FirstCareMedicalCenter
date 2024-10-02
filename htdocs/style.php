@@ -11,8 +11,9 @@
         nav {
             background-color: #333;
             overflow: hidden;
-            margin: 0;
-            padding: 0;
+            margin: 1;
+            padding: 1;
+            
         }
 
         nav ul {
@@ -26,7 +27,7 @@
         }
 
         nav a {
-            display: block;
+            display: red ;
             color: white;
             text-align: center;
             padding: 14px 16px;
@@ -34,7 +35,7 @@
         }
 
         nav a:hover {
-            background-color: #ddd;
+            background-color: blue;
             color: red;
         }
         
