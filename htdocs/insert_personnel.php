@@ -1,14 +1,13 @@
 <?php
 include("db_connection.php");
-        include("style.php");
-        include("style.php");
-
-include("style.php");
-
+      
+        
+?>
+</head>
+<body>
+<?php
 include("menu.php");
 ?>
-
-<body>
     <center>
         <h2>Insert New Personnel</h2>
         <form method="post" action="insert_personnel.php">
