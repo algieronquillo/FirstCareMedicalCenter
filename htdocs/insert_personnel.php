@@ -1,11 +1,9 @@
-<html style="background: url(https://static.vecteezy.com/system/resources/thumbnails/009/213/272/small_2x/healthcare-and-medical-background-with-cardiogram-line-free-vector.jpg);" style="background-size: 200;">
-<head>
-    <?php
-include("db_connection.php");
-?>
-</head>
 <?php
+include("db_connection.php");
         include("style.php");
+        include("style.php");
+
+include("style.php");
 
     include("menu.php");
 ?>
@@ -41,28 +39,33 @@ include("db_connection.php");
         </table>
     </form>
     <?php
-// Handle personnel insertion
-if (isset($_POST['insert_personnel'])) {
-    $lastname = $_POST['lastname'];
-    $name = $_POST['name'];
+
+    
+if(isset($_POST['insert_student'])) {
+
+ $lastname = $_POST['lastname'];
+$name = $_POST['name'];
+
+    $role = $_POST['role'];
     $role = $_POST['role'];
     $City =$_POST['City'];
     $Address =$_POST['Address'];
-
-    
-    $sql = "SELECT * FROM personnel WHERE lastname = '$lastname' AND name = '$name'";
-    $query = mysqli_query($conn, $sql);
-
-    if(mysqli_num_rows($query) == 1) {
-        echo "<script> alert('personnel already exists'); </script>";
     } else {
         // code for insert personnel
     }
 
-    
+ $role = $_POST['role'];
+    $City =$_POST['City'];
+    $Address =$_POST['Address'];
+   } else {
+        // code for insert personnel
+    }
 
 
 
+
+
+ $sql = "SELECT * FROM personnel WHERE lastname = '$lastname' name = '$name' role = '$role' ";
 
     $sql = "SELECT * FROM personnel WHERE lastname = '$lastname' AND name = '$name'";
     $query = mysqli_query($conn, $sql);
@@ -70,8 +73,7 @@ if (isset($_POST['insert_personnel'])) {
         $lastname = $_POST['lastname'];
         $name = $_POST['name'];
         $role = $_POST['role'];
-        $City = $_POST['City']; // Get City input
-        $Address= $_POST['Address'];
+       
        {
             echo "<script> alert('personnel already exists'); </script>";
         } 

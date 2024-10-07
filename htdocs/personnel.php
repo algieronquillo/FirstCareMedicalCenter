@@ -31,7 +31,8 @@
                     echo "<td>" . htmlspecialchars($row['lastname']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['name']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['role']) . "</td>";
-                    echo "</tr>";
+                    echo "<td>" . htmlspecialchars($row['address']) . "</td>"; // Added missing address
+                    echo "</tr>"; // Close the row
                 }
             } else {
                 echo "<tr><td colspan='3' align='center'>No personnel found</td></tr>";
