@@ -16,34 +16,33 @@
 		</tr>
 		<tr>
 			<th><h2>Mediacalcenter</h2></th>
-            <th><h2>location</h2></th>
+            
 
 		</tr>
 		</tr>
    <tr>
-   <td>Philippine General Hospital</td>
-            <td>Manila City</td>
+   <a href="">Click</a>
+   <td>Manila City, Philippine General Hospital</td>
+
    </tr>
 			
 
    <tr>
-   <td>St. Luke's Medical Center</td>
-           <td>Quezon City</td>  
+   <td>Quezon City, St. Luke's Medical Center</td>
+            
    </tr>
            
     <tr>
-        <td>Makati Medical Center</td>
+        <td>Makati City, Makati Medical Center</td>
 
-        <td>Makati City</td>
+    
     </tr>
    <tr>
 
-   <td>Cebu Doctors' University Hospital</td>
-        <td>Davao City</td>
+   <td>Davao City, Doctors' University Hospital</td>
+   
       
      </tr>  
-    
-
 
 </body>
 </html>
