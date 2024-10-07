@@ -21,7 +21,7 @@
 		</tr>
 		</tr>
    <tr>
-   <td style="href">Philippine General Hospital</td>
+   <td>Philippine General Hospital</td>
             <td>Manila City</td>
    </tr>
 			

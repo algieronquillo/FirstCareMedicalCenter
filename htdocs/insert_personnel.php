@@ -1,3 +1,5 @@
+<html>
+<head>
 <?php
 include("db_connection.php");
       
@@ -5,7 +7,9 @@ include("db_connection.php");
 ?>
 </head>
 <body>
+
 <?php
+ include("style.php");
 include("menu.php");
 ?>
     <center>
@@ -21,7 +25,7 @@ include("menu.php");
                     <td><input type="text" name="firstname" required></td>
                 </tr>
                 <tr>
-                    <td>Role</td>   
+                    <td>Role</td>
 
                     <td><input type="text" name="role" required></td>
                 </tr>
@@ -30,8 +34,7 @@ include("menu.php");
                     <td><input type="text" name="address" required></td>
                 </tr>
                 <tr>
-                    <td   
- colspan="2">
+                    <td>
                         <button type="submit" name="insert_personnel">Insert Personnel</button>
                     </td>
                 </tr>
@@ -66,3 +69,5 @@ include("menu.php");
 
 
 </body>
+
+</html>
