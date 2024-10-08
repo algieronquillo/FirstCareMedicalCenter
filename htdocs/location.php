@@ -19,30 +19,34 @@
             
 
 		</tr>
-		</tr>
-   <tr>
-   <a href="">Click</a>
-   <td>Manila City, Philippine General Hospital</td>
+	<TAble cellpadding="15" align="center" width="70%" border="5">
+     <nav>
+    <ul>
+        
+        <li><a href="personnel.php">Manila City, Philippine General Hospital</a></li>
+        </ul>
+        </nav>
 
-   </tr>
-			
+        <nav>
+    <ul>
+        <li><a href="location.php">Quezon City, St. Luke's Medical Center</a></li>
+        </ul>
+        </nav>
 
-   <tr>
-   <td>Quezon City, St. Luke's Medical Center</td>
-            
-   </tr>
-           
-    <tr>
-        <td>Makati City, Makati Medical Center</td>
-
-    
-    </tr>
-   <tr>
-
-   <td>Davao City, Doctors' University Hospital</td>
-   
-      
-     </tr>  
+        <nav>
+    <ul>
+        <li><a href="insert_personnel.php">Makati City, Makati Medical Center</a></li>
+        </ul>
+</nav>
+        
+<nav>
+    <ul>
+        <li><a href="insert_personnel.php">Davao City, Doctors' University Hospital</a></li>
+        
+       
+    </ul>
+</nav>
+</TAble>	
 
 </body>
 </html>
