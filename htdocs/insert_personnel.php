@@ -12,7 +12,7 @@ include("db_connection.php");
 include("menu.php");
 ?>
     <center>
-        <h2>Insert New Personnel</h2>
+        <h1>Insert New Personnel</h1>
         <form method="post" action="insert_personnel.php">
             <table border=5 align="center" cellspacing="0" cellpadding="15">
                 <tr>

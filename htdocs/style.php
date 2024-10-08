@@ -102,5 +102,8 @@
     button:hover {
         background-color: #218838; /* Darker green on hover */
     }
+    h1{
+        color: #218838;
+    }
 </style>
 </head>

@@ -11,7 +11,7 @@
     include("menu.php");
 ?>
 <center>
-<h1>location</h1>
+<h1>Location</h1>
 <table cellpadding="15" align="center" width="70%" border="5">
 		</tr>
 		<tr>
