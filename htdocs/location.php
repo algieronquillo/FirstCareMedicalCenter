@@ -41,7 +41,7 @@
         
 <nav>
     <ul>
-        <li><a href="insert_personnel.php">Davao City, Doctors' University Hospital</a></li>
+        <li><a href="davaocity.php">Davao City, Doctors' University Hospital</a></li>
         
        
     </ul>
