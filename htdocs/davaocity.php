@@ -10,7 +10,7 @@
     </head>
         <body>
 
-            
+            <center>
             <h1>Davao City, Doctors' University Hospital</h1>
             <table cellpadding="10" align="center" width="60%" border="">
         <tr>

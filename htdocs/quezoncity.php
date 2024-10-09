@@ -10,7 +10,7 @@
     </head>
         <body>
 
-            
+             <center>
             <h1>Quezon City, St. Luke's Medical Center</h1>
             <table cellpadding="10" align="center" width="60%" border="">
         <tr>

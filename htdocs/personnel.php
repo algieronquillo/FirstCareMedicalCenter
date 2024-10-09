@@ -30,7 +30,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<tr>"; // Start a new row
                 echo "<td>" . htmlspecialchars($row['lastname']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['firstname']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['specialty']) . "</td>";
                 echo "<td><a href='?action=delete&personnel_id=" . urlencode($row['personnel_id']) . "' onclick='return confirm(\"Are you sure you want to delete this personnel?\");'>Delete</a></td>"; // Delete link
@@ -59,6 +59,7 @@
         }
     }
     ?>
+    
 
 </body>
 </html>
