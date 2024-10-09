@@ -1,45 +1,42 @@
 <html>
 <head>
-<?php
-include("db_connection.php");
-             
-?>
+    <?php include("db_connection.php"); ?>
 </head>
+
 <body>
+    <?php
+    include("style.php");
+    include("menu.php");
+    ?>
 
-<?php
- include("style.php");
-include("menu.php");
-?>
     <center>
-        <h1>Insert New Personnel</h1>
-        <form method="post" action="insert_personnel.php">
-            <table border=5 align="center" cellspacing="0" cellpadding="15">
-                <tr>
-                    <td>Last Name</td>
-                    <td><input type="text" name="lastname" required></td>
-                </tr>
-                <tr>
-                    <td>First Name</td>
-                    <td><input type="text" name="firstname" required></td>
-                </tr>
-                <tr>
-                    <td>Role</td>
+    <h1>Insert Personnel</h1>
 
-                    <td><input type="text" name="role" required></td>
-                </tr>
-                <tr>
-                    <td>Address</td>
-                    <td><input type="text" name="address" required></td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="submit" name="insert_personnel">Insert Personnel</button>
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </center>
+    <form method="POST" action="insert_personnel.php">
+        <table cellpadding="10" align="center" width="60%">
+            <tr>
+                <td><label for="lastname">Lastname:</label></td>
+                <td><input type="text" name="lastname" required></td>
+            </tr>
+            <tr>
+                <td><label for="firstname">Firstname:</label></td>
+                <td><input type="text" name="firstname" required></td>
+            </tr>
+            <tr>
+                <td><label for="role">Role:</label></td>
+                <td><input type="text" name="role" required></td>
+            </tr>
+            <tr>
+                <td><label for="specialty">Specialty:</label></td>
+                <td><input type="text" name="specialty" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" name="add_personnel" value="Add Personnel">
+                </td>
+            </tr>
+        </table>
+    </form>
 
     <?php
     // Handle form submission
@@ -52,25 +49,14 @@ include("menu.php");
         // Insert personnel data into the database
         $sql = "INSERT INTO personnel (lastname, firstname, role, specialty) VALUES ('$lastname', '$firstname', '$role', '$specialty')";
 
-            $sql = "SELECT * AND FROM personnel WHERE lastname = '$lastname' name = '$name'";
-            $query = mysqli_connect($conn, $sql);
-            if(mysqli_num_rows($query) > 0) {
-                echo "<script> alert('Personnel already exists'); </script>";
-            } else {
-                $sql = "INSERT INTO personnel ( lastname, name, role,) VALUES ( '$lastname', '$name', '$role')";
-                $query = mysqli_connect($conn, $sql);
-                if($query) {
-                    echo "<script> alert('Personnel inserted successfully'); window.location='personnel.php';</script>";
-                } else {
-                    echo "<script> alert('Error: " . $sql . "<br>" . mysqli_error($conn) . "'); </script>";
-                }
-
-            }
-                
+        if (mysqli_query($conn, $sql)) {
+            echo "<script>alert('Personnel has been added'); window.location= 'personnel.php'; </script>";
+        } else {
+            echo "<script>alert('Error adding personnel: " . mysqli_error($conn) . "');</script>";
         }
+    }
     ?>
 
-
+    </center>
 </body>
-
 </html>

@@ -9,7 +9,7 @@
         ?>
     </head>
         <body>
-
+             <center>
             
             <h1>Makati City, Makati Medical Center</h1>
             <table cellpadding="10" align="center" width="60%" border="">
