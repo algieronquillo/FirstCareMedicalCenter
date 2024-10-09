@@ -3,7 +3,7 @@
     <?php
         include("style.php");
 
-        include("location.php");
+        include("manilacity.php");
         ?>
     </head>
         <body>
