@@ -105,5 +105,22 @@
     h1{
         color: #218838;
     }
+
+
+.delete-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: red; /* Red background */
+    color: white; /* White text */
+    text-decoration: none; /* No underline */
+    border-radius: 5px; /* Rounded corners */
+    border: none; /* No border */
+}
+
+.delete-button:hover {
+    background-color: darkred; /* Darker red on hover */
+    
+}
+
 </style>
 </head>
