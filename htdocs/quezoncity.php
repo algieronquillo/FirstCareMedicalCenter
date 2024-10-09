@@ -1,9 +1,11 @@
 <html>
     <head>
+        
     <?php
         include("style.php");
 
-        include("manilacity.php");
+        include("location.php");
+        
         ?>
     </head>
         <body>

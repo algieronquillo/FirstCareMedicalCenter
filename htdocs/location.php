@@ -29,7 +29,7 @@
 
         <nav>
     <ul>
-        <li><a href="location.php">Quezon City, St. Luke's Medical Center</a></li>
+        <li><a href="quezoncity.php">Quezon City, St. Luke's Medical Center</a></li>
         </ul>
         </nav>
 
