@@ -23,7 +23,7 @@
      <nav>
     <ul>
         
-        <li><a href="personnel.php">Manila City, Philippine General Hospital</a></li>
+        <li><a href="manilacity.php">Manila City, Philippine General Hospital</a></li>
         </ul>
         </nav>
 
