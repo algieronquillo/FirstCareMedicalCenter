@@ -35,7 +35,7 @@
 
         <nav>
     <ul>
-        <li><a href="insert_personnel.php">Makati City, Makati Medical Center</a></li>
+        <li><a href="makaticity.php">Makati City, Makati Medical Center</a></li>
         </ul>
 </nav>
         
