@@ -42,11 +42,15 @@ include("menu.php");
     </center>
 
     <?php
-        if(isset($_POST['personnel.php'])) {
-            $lastname = $_POST['lastname'];
-            $name = $_POST['name'];
-            $role = $_POST['role'];
-            $address = $_POST['address'];
+    // Handle form submission
+    if (isset($_POST['add_personnel'])) {
+        $lastname = mysqli_real_escape_string($conn, trim($_POST['lastname']));
+        $firstname = mysqli_real_escape_string($conn, trim($_POST['firstname']));
+        $role = mysqli_real_escape_string($conn, trim($_POST['role']));
+        $specialty = mysqli_real_escape_string($conn, trim($_POST['specialty']));
+
+        // Insert personnel data into the database
+        $sql = "INSERT INTO personnel (lastname, firstname, role, specialty) VALUES ('$lastname', '$firstname', '$role', '$specialty')";
 
             $sql = "SELECT * AND FROM personnel WHERE lastname = '$lastname' name = '$name'";
             $query = mysqli_connect($conn, $sql);

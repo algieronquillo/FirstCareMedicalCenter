@@ -44,9 +44,16 @@
         <li><a href="davaocity.php">Davao City, Doctors' University Hospital</a></li>
         
        
-    </ul>
-</nav>
-</TAble>	
+        if (mysqli_query($conn, $sql)) {
+            
+            echo "<script>alert('Location has been added'); window.location= 'location.php'; </script>";
+        } else {
+            echo "<script>alert('Error adding location: " . mysqli_error($conn) . "');</script>";
+        }
+    }
+    ?>
 
+    </center>
+    
 </body>
 </html>
