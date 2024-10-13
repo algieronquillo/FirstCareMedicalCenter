@@ -33,6 +33,7 @@
         <tr>
             <th>Medical Center</th>
             <th>Location</th>
+            <th>Action</th>
         </tr>
         <?php 
             $sql = "SELECT * FROM medicalcenter ORDER BY `name`";

@@ -37,7 +37,7 @@
     }
 
     nav a:hover {
-        background-color: #ff0000; /* Red on hover */
+        background-color: #8dd9f7; /* Red on hover */
         color: white; /* Change color to white */
     }
 
