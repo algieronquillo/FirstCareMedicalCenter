@@ -14,38 +14,6 @@
 
     <center>
     <h1>Location</h1>
-    <table cellpadding="15" align="center" width="70%" border="5">
-        <tr>
-            <th><h2>Medical Center</h2></th>
-        </tr>
-    </table>
-
-    <table cellpadding="15" align="center" width="70%" border="5">
-        <nav>
-            <ul>
-                <li><a href="manilacity.php">Manila City, Philippine General Hospital</a></li>
-            </ul>
-        </nav>
-
-        <nav>
-            <ul>
-                <li><a href="quezoncity.php">Quezon City, St. Luke's Medical Center</a></li>
-            </ul>
-        </nav>
-
-        <nav>
-            <ul>
-                <li><a href="makaticity.php">Makati City, Makati Medical Center</a></li>
-            </ul>
-        </nav>
-
-        <nav>
-            <ul>
-                <li><a href="davaocity.php">Davao City, Doctors' University Hospital</a></li>
-            </ul>
-        </nav>
-    </table>
-
     <form method="POST" action="location.php">
         <table cellpadding="10" align="center" width="60%">
             <tr>
@@ -53,17 +21,40 @@
                 <td><input type="text" name="medical_center" required></td>
             </tr>
             <tr>
+                <td><label for="location">Location:</label></td>
+                <td><input type="text" name="location" required></td>
+            </tr>
+            <tr>
                 <td colspan="2" align="center"><input type="submit" name="add_location" value="Add Location"></td>
             </tr>
         </table>
     </form>
+    <table cellpadding="15" align="center" width="70%" border="5">
+        <tr>
+            <th>Medical Center</th>
+            <th>Location</th>
+        </tr>
+        <?php 
+            $sql = "SELECT * FROM medicalcenter ORDER BY `name`";
+            $query = mysqli_query($conn, $sql);
+            while($result = mysqli_fetch_assoc($query)) {
+                echo "<tr>";
+                echo "<td>" . $result['name'] . "</td>" ;
+                echo "<td>" . $result['location'] . "</td>";
+                echo "</tr>";
+            }
+        ?>
+    </table>
+
+    
     <?php
     // Handle form submission
     if (isset($_POST['add_location'])) {
         $medical_center = mysqli_real_escape_string($conn, trim($_POST['medical_center']));
+        $location = mysqli_real_escape_string($conn, trim($_POST['location']));
 
         // Insert location data into the database
-        $sql = "INSERT INTO locations (medical_center) VALUES ('$medical_center')";
+        $sql = "INSERT INTO medicalcenter (`name`, `location`) VALUES ('$medical_center', '$location')";
 
         if (mysqli_query($conn, $sql)) {
             
