@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <?php include("db_connection.php"); ?>
+    <?php include("db.connection.php"); ?>
 </head>
 
 <body>
