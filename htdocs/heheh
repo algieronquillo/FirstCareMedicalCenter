@@ -1,0 +1,32 @@
+<?php
+    // Handle form submission
+    if (isset($_POST['add_location'])) {
+        $medical_center = mysqli_real_escape_string($conn, trim($_POST['medical_center']));
+        $location = mysqli_real_escape_string($conn, trim($_POST['location']));
+
+        // Insert location data into the database
+        $sql = "INSERT INTO medicalcenter (`name`, `location`) VALUES ('$medical_center', '$location')";
+
+        if (mysqli_query($conn, $sql)) {
+            echo "<script>alert('Location has been added'); window.location= 'location.php'; </script>";
+        } else {
+            echo "<script>alert('Error adding location: " . mysqli_error($conn) . "');</script>";
+        }
+    }
+    ?>
+    
+    <?php
+    // Handle delete action
+    if (isset($_GET['action']) && isset($_GET['center_id'])) {
+        $action = trim($_GET['action']);
+        $center_id = intval(trim($_GET['center_id'])); // Use intval to ensure it's an integer
+        if ($action == 'delete') {
+            $sql = "DELETE FROM medicalcenter WHERE center_id = $center_id"; // Quote removed since it's an integer
+            if (mysqli_query($conn, $sql)) {
+                echo "<script>alert('Location has been removed'); window.location= 'location.php'; </script>";
+            } else {
+                echo "<script>alert('Error deleting location: " . mysqli_error($conn) . "');</script>";
+            }
+        }
+    }
+    ?>

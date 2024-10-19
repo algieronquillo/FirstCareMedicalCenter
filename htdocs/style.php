@@ -11,6 +11,7 @@
     }
     
     nav {
+        text-align: center; /* Center the nav */
         background-color: #007BFF;
         overflow: hidden;
         margin: 0;
@@ -19,12 +20,19 @@
     }
 
     nav ul {
+        list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
         list-style: none;
         margin: 0;
         padding: 0;
+        text-align: center;
     }
 
     nav li {
+        display: inline; /* Display list items inline */
+        margin: 0 15px; /* Add space between items */
+        
         float: left;
     }
 
@@ -47,7 +55,7 @@
     }
     
     table {
-        width: 100%;
+        width: 50%;
         border-collapse: collapse;
         margin-bottom: 20px;
         background-color: #ffffff; /* White for a clean look */
@@ -69,7 +77,7 @@
     }
     
     tr:nth-child(even) {
-        background-color: #f2f2f2; /* Light gray for alternating rows */
+        background-color: light gray; /* Light gray for alternating rows */
     }
     
     tr:hover {
@@ -86,7 +94,7 @@
     /* Optional: Button styles for a more medical feel */
     button {
         background-color: #28a745; /* Green button for actions */
-        color: white;
+        color: red;
         border: none;
         padding: 10px 15px;
         text-align: center;
@@ -100,7 +108,7 @@
     }
     
     button:hover {
-        background-color: #218838; /* Darker green on hover */
+        background-color: red; 
     }
     h1{
         color: #218838;
@@ -111,7 +119,7 @@
     display: inline-block;
     padding: 10px 20px;
     background-color: red; /* Red background */
-    color: white; /* White text */
+    color: red; /* White text */
     text-decoration: none; /* No underline */
     border-radius: 5px; /* Rounded corners */
     border: none; /* No border */

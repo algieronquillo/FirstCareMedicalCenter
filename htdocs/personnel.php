@@ -11,7 +11,7 @@
     <center>
     <h1>Personnel</h1>
 
-    <table cellpadding="10" align="center" width="60%" border="">
+    <table cellpadding="5" align="center" width="35%" border="">
         <tr>
             <th><h2>Lastname</h2></th>
             <th><h2>Firstname</h2></th>
@@ -37,8 +37,8 @@
                 echo "<td>" . htmlspecialchars($row['specialty']) . "</td>";
                 echo "<td>
                     <button><a href='?action=delete&personnel_id=" . urlencode($row['personnel_id']) . "' onclick='return confirm(\"Are you sure you want to delete this personnel?\");'>Delete</a></button>
-                    <button><a href='edit_personnel.php?personnel_id=" . urlencode($row['personnel_id']) . "'>Edit</a></button>
-                </td>"; // Delete link and edit link
+                    
+                </td>"; // Delete link 
                 echo "</tr>"; // Close the row
             }
         } else {

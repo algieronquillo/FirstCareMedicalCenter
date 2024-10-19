@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <?php include("db.connection.php"); ?>
+    <?php include("db_connection.php"); ?>
 </head>
 
 <body>
@@ -29,33 +29,26 @@
             </tr>
         </table>
     </form>
+
     <table cellpadding="15" align="center" width="70%" border="5">
         <tr>
             <th>Medical Center</th>
             <th>Location</th>
             <th>Action</th>
         </tr>
-        <?php 
-            $sql = "SELECT * FROM medicalcenter ORDER BY `name`";
-            $query = mysqli_query($conn, $sql);
-            while($result = mysqli_fetch_assoc($query)) {
-                echo "<tr>";
-                echo "<td>" . $result['name'] . "</td>" ;
-                echo "<td>" . $result['location'] . "</td>";
-                echo "</tr>";
-            }
-        ?>
-    </table>
-
-    
-    <?php
+        <tr>
+            
+        </tr>
+        
+        
+        <?php
     // Handle form submission
     if (isset($_POST['add_location'])) {
         $medical_center = mysqli_real_escape_string($conn, trim($_POST['medical_center']));
         $location = mysqli_real_escape_string($conn, trim($_POST['location']));
 
         // Insert location data into the database
-        $sql = "INSERT INTO medicalcenter (`name`, `location`) VALUES ('$medical_center', '$location')";
+        $sql = "INSERT INTO medicalcenter('name', 'location') VALUES ('$medical_center', '$location')";
 
         if (mysqli_query($conn, $sql)) {
             
@@ -65,8 +58,28 @@
         }
     }
     ?>
+   
+
+
+   <?php 
+$sql = "SELECT * FROM medicalcenter ORDER BY `name`";
+$query = mysqli_query($conn, $sql);
+while ($result = mysqli_fetch_assoc($query)) {
+    echo "<tr>";
+    echo "<td>" . htmlspecialchars($result['name']) . "</td>";
+    echo "<td>" . htmlspecialchars($result['location']) . "</td>";
+    echo '<td><a href="Cebu.php?name=' . urlencode($result['name']) . '">View Personnel</a>
+    </td>';
+    
+    echo "</tr>";
+}
+?>
 
     </center>
-    
+ 
+
+    </table>
+
+
 </body>
 </html>
