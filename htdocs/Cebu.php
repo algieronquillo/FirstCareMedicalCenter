@@ -21,27 +21,29 @@
             </tr>
 
             <?php
-            // Updated personnel data
-            $personnel = [
-                ['firstname' => 'Nicole', 'lastname' => 'Baker', 'role' => 'Dietician','Specialty'=> 'Nutrition'],
-                ['firstname' => 'Emily', 'lastname' => 'Brown', 'role' => 'Laboratory','Specialty'=> 'Laboratory'],
-                ['firstname' => 'Daniel', 'lastname' => 'Cartel', 'role' => 'Anesthesiologist','Specialty'=> 'Anesthesiology'],
-                ['firstname' => 'Matthew', 'lastname' => 'Clark', 'role' => 'Receptionist','Specialty'=> 'Reception']
-            ];
+// Updated personnel data
+$personnel = [
+    ['firstname' => 'Nicole', 'lastname' => 'Baker', 'role' => 'Dietician', 'Specialty' => 'Nutrition'],
+    ['firstname' => 'Emily', 'lastname' => 'Brown', 'role' => 'Laboratory', 'Specialty' => 'Laboratory'],
+    ['firstname' => 'Daniel', 'lastname' => 'Cartel', 'role' => 'Anesthesiologist', 'Specialty' => 'Anesthesiology'],
+    ['firstname' => 'Matthew', 'lastname' => 'Clark', 'role' => 'Receptionist', 'Specialty' => 'Reception']
+];
 
-            // Loop through each personnel and display in table
-            foreach ($personnel as $person) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars($person['firstname'] . " " . $person['lastname']) . "</td>";
-                echo "<td>" . htmlspecialchars($person['role']) . "</td>";
-                echo "<td>" . htmlspecialchars($person['Specialty']) . "</td>";
+// Loop through each personnel and display in table
+foreach ($personnel as $person) {
+    echo "<tr>";
+    echo "<td>" . htmlspecialchars($person['firstname'] . " " . $person['lastname']) . "</td>";
+    echo "<td>" . htmlspecialchars($person['role']) . "</td>";
+    echo "<td>" . htmlspecialchars($person['Specialty']) . "</td>";
+    
+    // Correct the href and add missing closing tags
+    echo '<td><a href="patients1.php?name=' . urlencode($person['firstname'] . ' ' . $person['lastname']) . '">View Personnel</a></td>';
+   
+    
+    echo "</tr>";
+}
+?>
 
-                
-
-                echo '<td><a href="view_personnel.php?name=' . urlencode($person['firstname'] . ' ' . $person['lastname']) . '">View Patiens</a></td>';
-                echo "</tr>";
-            }
-            ?>
         </table>
     </center>
 </body>
