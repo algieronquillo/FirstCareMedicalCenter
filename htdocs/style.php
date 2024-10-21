@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personnel</title>
-    
+ 
        <style>
     * {
         font-family: Arial, sans-serif;
@@ -55,7 +49,8 @@
     }
     
     table {
-        width: 50%;
+        text-align: center;
+        width: 35%;
         border-collapse: collapse;
         margin-bottom: 20px;
         background-color: #ffffff; /* White for a clean look */
@@ -63,9 +58,10 @@
     }
     
     th, td {
+        text-align: center;
         border: 1px solid #dddddd; /* Light border */
         text-align: left;
-        padding: 12px;
+        padding: 15px;
         font-size: 14px; /* Slightly smaller font for better readability */
     }
     
@@ -81,7 +77,7 @@
     }
     
     tr:hover {
-        background-color: #e0f7fa; /* Light cyan on hover */
+        background-color: #aba9a9; /* Light cyan on hover */
     }
     
     pre {
@@ -128,6 +124,76 @@
 .delete-button:hover {
     background-color: darkred; /* Darker red on hover */
     
+}
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #35424a;
+    color: white;
+    padding: 20px;
+    text-align: center; /* Center header text */
+}
+
+.container {
+    display: flex; /* Use flexbox for layout */
+}
+
+nav {
+    width: 200px; /* Set fixed width for the sidebar */
+    background: #35424a;
+    padding: 25px;
+}
+
+nav ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+nav ul li {
+    margin-bottom: 15px; /* Space between links */
+    text-align: center; /* Center text within each list item */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block; /* Make the link fill the area */
+    padding: 15px; /* Add padding for better clickability */
+    transition: background 0.3s; /* Smooth background transition */
+}
+
+nav ul li a:hover {
+    background: #47525e; /* Change background on hover */
+    border-radius: 5px; /* Rounded corners on hover */
+}
+
+main {
+    padding: 25px;
+    background: white;
+    flex-grow: 1; /* Allow main content to grow */
+    border-radius: 5px;
+    margin-left: 20px; /* Space between nav and main content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #35424a;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }
 
 </style>

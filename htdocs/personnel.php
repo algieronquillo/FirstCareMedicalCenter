@@ -11,7 +11,7 @@
     <center>
     <h1>Personnel</h1>
 
-    <table cellpadding="5" align="center" width="35%" border="">
+    <table cellpadding="5" align="center" width="80%" border="">
         <tr>
             <th><h2>Lastname</h2></th>
             <th><h2>Firstname</h2></th>
@@ -47,10 +47,10 @@
             echo "<tr><td colspan='5' align='center'>No personnel found</td></tr>"; // Correct colspan
         }
         ?>
+  </table>
 
-    </table>
     </center>
-   
+   <center>
 <?php
     // Handle delete action
         if (isset($_GET['action']) && isset($_GET['personnel_id'])) {
@@ -66,7 +66,7 @@
         }
     }
     ?>
-   
+   </center>
 
 </body>
 </html>
