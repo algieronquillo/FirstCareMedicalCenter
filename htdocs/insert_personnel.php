@@ -13,7 +13,7 @@
     <h1>Insert Personnel</h1>
 
     <form method="POST" action="insert_personnel.php">
-        <table cellpadding="10" align="center" width="60%">
+        <table cellpadding="30" align="center" width="60%">
             <tr>
                 <td><label for="lastname">Lastname:</label></td>
                 <td><input type="text" name="lastname" required></td>

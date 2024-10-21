@@ -21,6 +21,7 @@
         margin: 0;
         padding: 0;
         text-align: center;
+        border: 2px solid black;
     }
 
     nav li {
@@ -49,12 +50,14 @@
     }
     
     table {
-        text-align: center;
-        width: 35%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-        background-color: #ffffff; /* White for a clean look */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+       
+       width: 50%;
+       border-collapse: collapse;
+       margin-bottom: 20px;
+       background-color: #ffffff; /* White for a clean look */
+       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+       text-align: center;
+        
     }
     
     th, td {
@@ -66,6 +69,7 @@
     }
     
     th {
+        text-align: center;
         background-color: #007BFF; /* Medical blue */
         color: white;
         text-transform: uppercase; /* Uppercase for a professional look */
@@ -107,9 +111,11 @@
         background-color: red; 
     }
     h1{
-        color: #218838;
-    }
+        color: Green;
+        font-size: 50px;
+        text-shadow: 2px 2px 8px #68997b;
 
+    }
 
 .delete-button {
     display: inline-block;
@@ -129,72 +135,9 @@
 
 
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
 
-header {
-    background: #35424a;
-    color: white;
-    padding: 20px;
-    text-align: center; /* Center header text */
-}
 
-.container {
-    display: flex; /* Use flexbox for layout */
-}
 
-nav {
-    width: 200px; /* Set fixed width for the sidebar */
-    background: #35424a;
-    padding: 25px;
-}
-
-nav ul {
-    list-style-type: none; /* Remove default list styling */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
-}
-
-nav ul li {
-    margin-bottom: 15px; /* Space between links */
-    text-align: center; /* Center text within each list item */
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    display: block; /* Make the link fill the area */
-    padding: 15px; /* Add padding for better clickability */
-    transition: background 0.3s; /* Smooth background transition */
-}
-
-nav ul li a:hover {
-    background: #47525e; /* Change background on hover */
-    border-radius: 5px; /* Rounded corners on hover */
-}
-
-main {
-    padding: 25px;
-    background: white;
-    flex-grow: 1; /* Allow main content to grow */
-    border-radius: 5px;
-    margin-left: 20px; /* Space between nav and main content */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background: #35424a;
-    color: white;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
 
 </style>
 </head>

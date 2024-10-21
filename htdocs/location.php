@@ -15,7 +15,7 @@
     <center>
     <h1>Location</h1>
     <form method="POST" action="location.php">
-        <table cellpadding="10" align="center" width="60%">
+        <table cellpadding="50" align="center" width="100%">
             <tr>
                 <td><label for="medical_center">Medical Center:</label></td>
                 <td><input type="text" name="medical_center" required></td>

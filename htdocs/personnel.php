@@ -8,9 +8,10 @@
     include("style.php");
     include("menu.php");
     ?>
-    <center>
+   <center>
     <h1>Personnel</h1>
 
+     
     <table cellpadding="5" align="center" width="80%" border="">
         <tr>
             <th><h2>Lastname</h2></th>
