@@ -38,7 +38,7 @@
 
                 
 
-                echo '<td><a href="view_personnel.php?name=' . urlencode($person['firstname'] . ' ' . $person['lastname']) . '">View</a></td>';
+                echo '<td><a href="view_personnel.php?name=' . urlencode($person['firstname'] . ' ' . $person['lastname']) . '">View Patiens</a></td>';
                 echo "</tr>";
             }
             ?>
