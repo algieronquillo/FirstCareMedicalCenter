@@ -72,9 +72,9 @@
         </form>
 
         <?php
-        if (isset($_POST['assign'])) {
-            $personnel = ($_POST['personnel']);
-            $medicalcenter = ($_POST['medicalcenter']);
+        if (isset($_POST['assign_personnel'])) {
+            $personnel = ($_POST['personnel_lastname']);
+            $medical_center = ($_POST['medical_center']);
 
             if ($personnel && $medicalcenter) {
                 $sql = "UPDATE personnel SET medicalcenter = '$medicalcenter' WHERE lastname = '$personnel'";
