@@ -21,13 +21,8 @@
             </tr>
 
             <?php
-// Updated personnel data
-$personnel = [
-    ['firstname' => 'Nicole', 'lastname' => 'Baker', 'role' => 'Dietician', 'Specialty' => 'Nutrition'],
-    ['firstname' => 'Emily', 'lastname' => 'Brown', 'role' => 'Laboratory', 'Specialty' => 'Laboratory'],
-    ['firstname' => 'Daniel', 'lastname' => 'Cartel', 'role' => 'Anesthesiologist', 'Specialty' => 'Anesthesiology'],
-    ['firstname' => 'Matthew', 'lastname' => 'Clark', 'role' => 'Receptionist', 'Specialty' => 'Reception']
-];
+$sql = "SELECT * FROM patients ORDER BY firstname"; // Fixed SQL syntax
+$result = mysqli_query($conn, $sql);
 
 // Loop through each personnel and display in table
 foreach ($personnel as $person) {

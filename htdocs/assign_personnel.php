@@ -16,15 +16,15 @@
         <form method="post">
             <table border="1" align="center" cellspacing="0" cellpadding="10">
                 <tr>
-                    <td>Medical Center</td>
+                    <td>Personnel</td>
                     <td>
                         <select name="personnel">
-                            <option value=""> -- SELECT A Personnel --</option>
+                            <option value=""> -- SELECT A PERSONNEL --</option>
                             <?php
                             $sql = "SELECT * FROM personnel ORDER BY lastname";
                             $query = mysqli_query($conn, $sql);
                             if (!$query) {
-                                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                                echo "Error: " . mysqli_error($conn);
                             } else {
                                 while ($result = mysqli_fetch_assoc($query)) {
                                     echo "<option value='{$result['personnel_id']}'>{$result['lastname']}, {$result['firstname']}, {$result['role']}, {$result['specialty']}</option>";
@@ -32,23 +32,22 @@
                             }
                             ?>
                         </select>
-
                     </td>
                 </tr>
 
                 <tr>
                     <td>Medical Center</td>
                     <td>
-                        <select name="personnel">
-                            <option value=""> -- SELECT A Medical Center --</option>
+                        <select name="medicalcenter">
+                            <option value=""> -- SELECT A MEDICAL CENTER --</option>
                             <?php
                             $sql = "SELECT * FROM medicalcenter ORDER BY name";
                             $query = mysqli_query($conn, $sql);
                             if (!$query) {
-                                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                                echo "Error: " . mysqli_error($conn);
                             } else {
                                 while ($result = mysqli_fetch_assoc($query)) {
-                                    echo "<option value='{$result['center_id']}'>{$result['name']}, {$result['location']}, </option>";
+                                    echo "<option value='{$result['center_id']}'>{$result['name']}, {$result['location']}</option>";
                                 }
                             }
                             ?>
@@ -57,38 +56,31 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <button type="submit" name="assign" class="button green">Assign</button>
+                        <button type="submit" name="assign_personnel" class="button green">Assign</button>
                     </td>
-                </tr>
-                </td>
-                </tr>
-                <tr>
                 </tr>
             </table>
         </form>
 
-        </select>
-        </table>
-        </form>
-
         <?php
         if (isset($_POST['assign_personnel'])) {
-            $personnel = ($_POST['personnel_lastname']);
-            $medical_center = ($_POST['medical_center']);
+            // Retrieve selected personnel and medical center
+            $personnel_id = mysqli_real_escape_string($conn, $_POST['personnel']);
+            $medicalcenter_id = mysqli_real_escape_string($conn, $_POST['medicalcenter']);
 
-            if ($personnel && $medicalcenter) {
-                $sql = "UPDATE personnel SET medicalcenter = '$medicalcenter' WHERE lastname = '$personnel'";
+            // Use a proper INSERT statement
+            $sql = "INSERT INTO assignments (personnel_id, medicalcenter_id) VALUES ('$personnel_id', '$medicalcenter_id')";
 
-                if (mysqli_query($conn, $sql)) {
-                    echo "<script>alert('Personnel has been assigned to a medical center'); window.location='personnel.php';</script>";
-                } else {
-                    echo "Error: " . mysqli_error($conn);
-                }
+            if (mysqli_query($conn, $sql)) {
+                echo "<script>alert('Personnel has been assigned to a medical center'); window.location='personnel.php';</script>";
             } else {
-                echo "<script>alert('Please select both personnel and medical center.');</script>";
+                echo "Error: " . mysqli_error($conn);
             }
         }
         ?>
+    </center>
 </body>
 
 </html>
+
+

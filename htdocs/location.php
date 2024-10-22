@@ -68,7 +68,7 @@ while ($result = mysqli_fetch_assoc($query)) {
     echo "<tr>";
     echo "<td>" . htmlspecialchars($result['name']) . "</td>";
     echo "<td>" . htmlspecialchars($result['location']) . "</td>";
-    echo'<td><a href="Cebu.php?name=' . urlencode($result['name']) . '">View Personnel</a>
+    echo'<td><a href="assign_personnel.php?name=' . urlencode($result['name']) . '">View Personnel</a>
     </td>';
     
     echo "</tr>";

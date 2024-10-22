@@ -18,6 +18,7 @@
             <th><h2>Role</h2></th>
             <th><h2>Specialty</h2></th>
             <th><h2>Action</h2></th>
+            <th><h2>location</h2></th>
         </tr>
 
         <?php
@@ -36,6 +37,7 @@
                 echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['specialty']) . "</td>";
                 echo "<td>
+
                     <button><a href='?action=delete&personnel_id=" . urlencode($row['personnel_id']) . "' onclick='return confirm(\"Are you sure you want to delete this personnel?\");'>Delete</a></button>
                     
                 </td>"; // Delete link 
