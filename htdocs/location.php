@@ -48,7 +48,7 @@
         $location = mysqli_real_escape_string($conn, trim($_POST['location']));
 
         // Insert location data into the database
-        $sql = "INSERT INTO medicalcenter('name', 'location') VALUES ('$medical_center', '$location')";
+        $sql = "INSERT INTO medicalcenter(`name`, `location`) VALUES ('$medical_center', '$location')";
 
         if (mysqli_query($conn, $sql)) {
             
@@ -74,6 +74,9 @@ while ($result = mysqli_fetch_assoc($query)) {
     echo "</tr>";
 }
 ?>
+
+
+
 
     </center>
  

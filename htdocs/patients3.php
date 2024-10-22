@@ -21,7 +21,7 @@
 
             <?php
 // Fetch specific patients data from the database, ordered by first name
-$sql = "SELECT * FROM patients WHERE firstname IN ('	Frank', 'Grace	', 'Henry','Isabella','Jack') ORDER BY firstname"; // Fixed SQL syntax
+$sql = "SELECT * FROM patients WHERE firstname IN ('Frank','Grace','Henry','Isabella','Jack') ORDER BY firstname"; // Fixed SQL syntax
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
