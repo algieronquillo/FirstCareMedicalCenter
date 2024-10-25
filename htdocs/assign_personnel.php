@@ -69,7 +69,7 @@
             $medicalcenter_id = mysqli_real_escape_string($conn, $_POST['medicalcenter']);
 
             // Use a proper INSERT statement
-            $sql = "INSERT INTO assignments (personnel_id, medicalcenter_id) VALUES ('$personnel_id', '$medicalcenter_id')";
+            $sql = "INSERT INTO medicalpersonnel (personnel_id, center_id) VALUES ('$personnel_id', '$medicalcenter_id')";
 
             if (mysqli_query($conn, $sql)) {
                 echo "<script>alert('Personnel has been assigned to a medical center'); window.location='personnel.php';</script>";

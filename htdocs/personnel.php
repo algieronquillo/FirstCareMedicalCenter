@@ -18,13 +18,13 @@
             <th><h2>Firstname</h2></th>
             <th><h2>Role</h2></th>
             <th><h2>Specialty</h2></th>
-            <th><h2>Action</h2></th>
             <th><h2>location</h2></th>
+            <th><h2>Action</h2></th>
         </tr>
 
         <?php
         // Fetch personnel data from the database, ordered by last name
-        $sql = "SELECT * FROM personnel ORDER BY lastname";
+        $sql = "SELECT * FROM personnel INNER JOIN medicalpersonnel ON personnel.personnel_id = medicalpersonnel.personnel_id INNER JOIN medicalcenter ON medicalcenter.center_id = medicalpersonnel.center_id";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
@@ -37,6 +37,7 @@
                 echo "<td>" . htmlspecialchars($row['firstname']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['specialty']) . "</td>";
+                echo "<td>" . htmlspecialchars($row['name']) . "</td>";
                 echo "<td>
 
                     <button><a href='?action=delete&personnel_id=" . urlencode($row['personnel_id']) . "' onclick='return confirm(\"Are you sure you want to delete this personnel?\");'>Delete</a></button>
