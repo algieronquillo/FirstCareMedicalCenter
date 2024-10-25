@@ -24,16 +24,10 @@
 $sql = "SELECT * FROM patients WHERE firstname IN ('Alice', 'Bob', 'Charlie','Diana','Eric') ORDER BY firstname"; // Fixed SQL syntax
 $result = mysqli_query($conn, $sql);
 
-if (mysqli_num_rows($result) > 0) {
-    // Output data of each row
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>"; // Start a new row
-        echo "<td>" . htmlspecialchars($row['firstname']) . ", " . htmlspecialchars($row['lastname']) . "</td>"; // Display full name
-        echo "<td>" . htmlspecialchars($row['dateofbirth']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['phonenumber']) . "</td>";
-        echo "</tr>"; // Close the row
-
-    }
+                echo "<td>;
+                 echo "</tr>";
+            
+            }
 } else {
     echo "<tr><td colspan='1' align='center'>No patients found</td></tr>"; // Correct colspan to match number of columns
 }
