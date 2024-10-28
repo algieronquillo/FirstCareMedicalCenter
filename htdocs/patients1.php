@@ -1,45 +1,84 @@
-<?php
+<html>
+
+<head>
+    <?php
     include("db_connection.php");
-?>
+    ?>
+</head>
 
 <body>
     <?php
-        include("style.php");
-        include("menu.php");
-
-        $center_id = $_GET['center_id'];
-
-        // Fetch the medical center details
-        $course = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM medicalcenter WHERE center_id = '$center_id'"));
+    include("style.php");
+    include("menu.php");
     ?>
-    <h1> Personnel who sign in medical center <?php echo htmlspecialchars($course['name']); ?> </h1>
-    
-    <br>
-    <table class='center-table' border="1" align="center" cellspacing="0" cellpadding="10">
-        <tr>
-            <th> Full Name </th>
-            <th> Role </th>
-            <th> Location </th>
-        </tr>
+    <center>
+        <h1>Assign Medical Center to Personnel</h1>
+        <form method="post">
+            <table border="1" align="center" cellspacing="0" cellpadding="10">
+            <tr>
+                    <td>patients</td>
+                    <td>
+                        <select name="patients">
+                            <option value=""> -- SELECT A PATIENTS --</option>
+                            <?php
+                            $sql = "SELECT * FROM patients ORDER BY lastname";
+                            $query = mysqli_query($conn, $sql);
+                            if (!$query) {
+                                echo "Error: " . mysqli_error($conn);
+                            } else {
+                                while ($result = mysqli_fetch_assoc($query)) {
+                                    echo "<option value='{$result['patient_id']}'>{$result['firstname']}, {$result['lastname']}, {$result['dateofbirth']}, {$result['phonenumber']}</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Medical Center</td>
+                    <td>
+                        <select name="medicalcenter">
+                            <option value=""> -- SELECT A MEDICAL CENTER --</option>
+                            <?php
+                            $sql = "SELECT * FROM medicalcenter ORDER BY name";
+                            $query = mysqli_query($conn, $sql);
+                            if (!$query) {
+                                echo "Error: " . mysqli_error($conn);
+                            } else {
+                                while ($result = mysqli_fetch_assoc($query)) {
+                                    echo "<option value='{$result['center_id']}'>{$result['name']}, {$result['location']}</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="submit" name="patients" class="button green">Assign</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
         <?php
-         $sql = "SELECT * FROM personnel 
-                 INNER JOIN medicalpersonnel ON personnel.personnel_id = medicalpersonnel.personnel_id 
-                 INNER JOIN medicalcenter ON medicalcenter.center_id = medicalpersonnel.center_id 
-                 WHERE medicalcenter.center_id = '$center_id'"; // Ensure you filter by center_id
-                 
-        $query = mysqli_query($conn, $sql);
-        if (!$query) {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        } else {
-            while ($result = mysqli_fetch_assoc($query)) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars($result["lastname"] . ", " . $result['firstname']) . "</td>";
-                echo "<td>" . htmlspecialchars($result['role']) . "</td>";
-                echo "<td>" . htmlspecialchars($result['location']) . "</td>";
-                echo "</tr>"; // Fixed this line
+        if (isset($_POST['patients'])) {
+            // Retrieve selected patients and medical center
+            $patient_id = mysqli_real_escape_string($conn, $_POST['patients']);
+            $medicalcenter_id = mysqli_real_escape_string($conn, $_POST['medicalcenter']);
+
+            // Use a proper INSERT statement
+            $sql = "INSERT INTO appointments (patient_id, center_id) VALUES ('$patient_id', '$medicalcenter_id')";
+
+            if (mysqli_query($conn, $sql)) {
+                echo "<script>alert('Patients has been assigned to a personnel'); window.location='assign_patients .php';</script>";
+            } else {
+                echo "Error: " . mysqli_error($conn);
             }
         }
         ?>
-    </table>
+    </center>
 </body>
+
 </html>

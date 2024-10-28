@@ -14,8 +14,8 @@
      
     <table cellpadding="5" align="center" width="80%" border="">
         <tr>
-            <th><h2>Lastname</h2></th>
-            <th><h2>Firstname</h2></th>
+           
+            <th><h2>Fullname</h2></th>
             <th><h2>Role</h2></th>
             <th><h2>Specialty</h2></th>
             <th><h2>location</h2></th>
@@ -24,7 +24,8 @@
 
         <?php
         // Fetch personnel data from the database, ordered by last name
-        $sql = "SELECT * FROM personnel INNER JOIN medicalpersonnel ON personnel.personnel_id = medicalpersonnel.personnel_id INNER JOIN medicalcenter ON medicalcenter.center_id = medicalpersonnel.center_id";
+        $sql = "SELECT * FROM personnel
+        INNER JOIN medicalpersonnel ON personnel.personnel_id = medicalpersonnel.personnel_id INNER JOIN medicalcenter ON medicalcenter.center_id = medicalpersonnel.center_id";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
@@ -34,7 +35,6 @@
 
     echo "<tr>"; // Start a new row
                 echo "<td>" . htmlspecialchars($row['lastname']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['firstname']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['specialty']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['name']) . "</td>";
