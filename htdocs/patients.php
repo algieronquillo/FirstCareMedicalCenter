@@ -1,48 +1,44 @@
 <?php
-    include("db_connection.php");
+include("db_connection.php");
 ?>
 
 <body>
     <?php
-        include("style.php");
-        include("menu.php");
+    include("style.php");
+    include("menu.php");
 
-        $name = $_GET['name'];
+    // Fetch all patients from the database
+    $sql = "SELECT patient_id, firstname, lastname, dateofbirth, phonenumber FROM patients";
+    $result = mysqli_query($conn, $sql);
 
-        // Fetch the medical center details
-        $course = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM medicalcenter WHERE name = '$name'"));
+    if (!$result) {
+        echo "Error: " . mysqli_error($conn);
+        exit; // Stop execution if there's an error
+    }
     ?>
+
     <center>
-    <h2> assign patients in the Personnel<?php echo htmlspecialchars($medicalcenter['name']); ?> </h2>
+    <h2>Patient List</h2>
     
     <br>
     <table class='center-table' border="1" align="center" cellspacing="0" cellpadding="10">
         <tr>
-            <th> Full Name </th>
-            <th> dateofbirth </th>
-            <th> phonenumber </th>
+            <th>Patient ID</th>
+            <th>Full Name</th>
+            <th>Date of Birth</th>
+            <th>Phone Number</th>
         </tr>
         <?php
-         $sql = "SELECT * FROM patients 
-                 INNER JOIN appointments ON patients.patient_id = appionments.patient_id 
-                 INNER JOIN medicalcenter ON medicalcenter.center_id = appointments.center_id 
-                 WHERE medicalcenter.name = '$name'"; // Ensure you filter by center_id
-                 
-        $query = mysqli_query($conn, $sql);
-        if (!$query) {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        } else {
-            while ($result = mysqli_fetch_assoc($query)) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars($result["lastname"] . ", " . $result['firstname']) . "</td>";
-                echo "<td>" . htmlspecialchars($result['dateofbirth']) . "</td>";
-                echo "<td>" . htmlspecialchars($result['phonenumber']) . "</td>";
-                echo "</tr>"; // Fixed this line
-            }
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($row['patient_id']) . "</td>"; // Display Patient ID
+            echo "<td>" . htmlspecialchars($row['lastname'] . ", " . $row['firstname']) . "</td>"; // Full Name
+            echo "<td>" . htmlspecialchars($row['dateofbirth']) . "</td>"; // Date of Birth
+            echo "<td>" . htmlspecialchars($row['phonenumber']) . "</td>"; // Phone Number
+            echo "</tr>";
         }
         ?>
     </table>
+    </center>
 </body>
-
 </html>
-

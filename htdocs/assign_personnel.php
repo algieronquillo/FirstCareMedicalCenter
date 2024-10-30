@@ -27,7 +27,7 @@
                                 echo "Error: " . mysqli_error($conn);
                             } else {
                                 while ($result = mysqli_fetch_assoc($query)) {
-                                    echo "<option value='{$result['personnel_id']}'>{$result['lastname']}, {$result['firstname']}, {$result['role']}, {$result['specialty']}</option>";
+                                    echo "<option value='{$result['personnel_id']}'>{$result['lastname']}, {$result['name']}, {$result['role']}, {$result['specialty']}</option>";
                                 }
                             }
                             ?>

@@ -70,11 +70,12 @@ while ($result = mysqli_fetch_assoc($query)) {
     echo "<td>" . htmlspecialchars($result['location']) . "</td>";
     echo'<td><a href="personnel1.php?name=' . urlencode($result['name']) . '">View Personnel</a>
     </td>';
-    echo'<td><a href="patients.php?name=' . urlencode($result['name']) . '">View Personnel</a>
+    echo'<td><a href="patients.php?=' . urlencode($result['location']) . '">View patients</a>
     </td>';
     echo "</tr>";
 }
 ?>
+
 
 
 
