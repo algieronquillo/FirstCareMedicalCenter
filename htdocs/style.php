@@ -55,7 +55,7 @@
        border-collapse: collapse;
        margin-bottom: 20px;
        background-color: #ffffff; /* White for a clean look */
-       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+       box-shadow: 0 2px 5px rgba(0, 0, 0, 1.1); /* Soft shadow for depth */
        text-align: center;
         
     }
@@ -111,11 +111,13 @@
         background-color: red; 
     }
     h1{
-        color: Green;
+        color: #006400;
         font-size: 50px;
-        text-shadow: 2px 2px 8px #68997b;
+    
 
     }
+  
+
 
 .delete-button {
     display: inline-block;
@@ -136,8 +138,4 @@
 
 
 
-
-
-
 </style>
-</head>

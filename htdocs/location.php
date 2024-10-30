@@ -35,6 +35,7 @@
             <th>Medical Center</th>
             <th>Location</th>
             <th>Action</th>
+            <th>Action</th>
         </tr>
         <tr>
             
@@ -70,7 +71,7 @@ while ($result = mysqli_fetch_assoc($query)) {
     echo "<td>" . htmlspecialchars($result['location']) . "</td>";
     echo'<td><a href="personnel1.php?name=' . urlencode($result['name']) . '">View Personnel</a>
     </td>';
-    echo'<td><a href="patients.php?=' . urlencode($result['location']) . '">View patients</a>
+    echo'<td><a href="patients1.php?center_id=' . urlencode($result['center_id']) . '">View patients</a>
     </td>';
     echo "</tr>";
 }

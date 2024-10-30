@@ -21,6 +21,7 @@
             <th> Name </th>
             <th> Role </th>
             <th> Location </th>
+            
         </tr>
         <?php
          $sql = "SELECT * FROM personnel 
@@ -37,11 +38,13 @@
                 echo "<td>" . htmlspecialchars($result["lastname"]) . "</td>";
                 echo "<td>" . htmlspecialchars($result['role']) . "</td>";
                 echo "<td>" . htmlspecialchars($result['location']) . "</td>";
+                
                 echo "</tr>"; // Fixed this line
             }
         }
         ?>
     </table>
+    
 </body>
 
 </html>

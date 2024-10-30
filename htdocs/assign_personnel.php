@@ -1,10 +1,8 @@
-<html>
 
-<head>
     <?php
     include("db_connection.php");
     ?>
-</head>
+
 
 <body>
     <?php
@@ -79,8 +77,7 @@
         }
         ?>
     </center>
-</body>
 
-</html>
+</body>
 
 

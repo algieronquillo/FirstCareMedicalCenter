@@ -25,7 +25,8 @@
         <?php
         // Fetch personnel data from the database, ordered by last name
         $sql = "SELECT * FROM personnel
-        INNER JOIN medicalpersonnel ON personnel.personnel_id = medicalpersonnel.personnel_id INNER JOIN medicalcenter ON medicalcenter.center_id = medicalpersonnel.center_id";
+        INNER JOIN medicalpersonnel ON personnel.personnel_id = medicalpersonnel.personnel_id 
+        INNER JOIN medicalcenter ON medicalcenter.center_id = medicalpersonnel.center_id";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
