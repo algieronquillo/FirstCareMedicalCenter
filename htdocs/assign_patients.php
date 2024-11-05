@@ -61,23 +61,20 @@ include("db_connection.php");
         <?php
         if (isset($_POST['assign_patient'])) {
             // Validate and retrieve selected patient and medical center
-            $patient_id = mysqli_real_escape_string($conn, $_POST['patient']);
+            $patient_id = mysqli_real_escape_string($conn, $_POST['patients']);
             $medicalcenter_id = mysqli_real_escape_string($conn, $_POST['medicalcenter']);
 
             if ($patient_id && $medicalcenter_id) {
                 // Insert data into appointments table with the current date
-                $sql = "INSERT INTO appointments (patient_id, center_id,) VALUES ('$patient_id', '$medicalcenter_id',())";
+                $sql = "INSERT INTO appointments (patient_id, center_id) VALUES ('$patient_id', '$medicalcenter_id')";
                 
                 if (mysqli_query($conn, $sql)) {
-                    echo "<script>alert('Patient has been assigned to a medical center'); window.location='patients.php';</script>";
+                    echo "<script>alert('Patient has been assigned to a medical center'); window.location='patients1.php';</script>";
                 } else {
-                    echo "Error: " . mysqli_error($conn);
-                }
-            } else {
-                echo "<script>alert('Please select both a patient and a medical center');</script>";
+                      echo "Error: " . mysqli_error($conn);
             }
-        }
+        }}
         ?>
     </center>
+
 </body>
-</html>
