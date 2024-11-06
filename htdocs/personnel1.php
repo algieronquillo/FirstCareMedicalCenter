@@ -13,7 +13,7 @@
         $course = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM medicalcenter WHERE name = '$name'"));
     ?>
     <center>
-    <h2> Personnel who sign in medical center <?php echo htmlspecialchars($course['name']); ?> </h2>
+    <h1> Personnel who sign in medical center <?php echo htmlspecialchars($course['name']); ?> </h1>
     
     <br>
     <table class='center-table' border="1" align="center" cellspacing="0" cellpadding="10">
@@ -46,4 +46,5 @@
     </table>
     
 </body>
+
 </html>
