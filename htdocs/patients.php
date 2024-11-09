@@ -7,13 +7,13 @@
         include("style.php");
         include("menu.php");
 
-        $name = $_GET['name'];
+        $name = $_GET['name'] ?? ''; // Use an empty string if 'name' is not set
 
         // Fetch the medical center details
-        $course = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM medicalcenter WHERE name = '$name'"));
+        $course = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM medicalcenter WHERE name = '$name' "));
     ?>
     <center>
-    <h1> Patients who sign in Medicalcenter <?php echo htmlspecialchars($course['name']); ?> </h1>
+    <h1> Patients who sign in Medicalcenter </h1>
     
     <br>
     <table class='center-table' border="1" align="center" cellspacing="0" cellpadding="10">
@@ -30,7 +30,7 @@
                  INNER JOIN appointments ON patients.patient_id = appointments.patient_id 
                  INNER JOIN medicalcenter ON medicalcenter.center_id = appointments.center_id 
                  WHERE medicalcenter.name = '$name'"; // Ensure you filter by center_id
-                 
+                  $result = mysqli_query($conn, $sql);
         $query = mysqli_query($conn, $sql);
         if (!$query) {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -45,6 +45,7 @@
             }
         }
         ?>
+
         </table>
     </center>
 </body>

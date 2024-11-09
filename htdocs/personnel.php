@@ -33,10 +33,8 @@
 
         if (mysqli_num_rows($result) > 0) {
             // Output data of each row
-            while ($row = mysqli_fetch_assoc($result))
- {
-
-    echo "<tr>"; // Start a new row
+            while ($row = mysqli_fetch_assoc($result)) {
+       echo "<tr>"; // Start a new row
                 echo "<td>" . htmlspecialchars($row['lastname']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['specialty']) . "</td>";

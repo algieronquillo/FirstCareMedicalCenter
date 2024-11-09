@@ -20,18 +20,17 @@ header {
     text-align: center;
 }
 
-  h1 {
+h1 {
     font-size: 36px;
-    color: ; 
+    color: black; /* Specify a color here */
     margin-bottom: 0.5rem;
     text-align: center;
     padding: 10px 0;
     padding: 14px 16px;
-
 }
 
 nav {
-    background-color: 24563a;
+    background-color: #24563a; /* Corrected color code */
     overflow: hidden;
     padding: 10px 0;
 }
@@ -62,7 +61,7 @@ nav a:hover {
 
 /* Main Content Styles */
 h2 {
-    color: white;
+    color: #ffffff; /* Specify a color here */
     font-size: 28px;
     margin-bottom: 1rem;
 }
@@ -90,7 +89,7 @@ th, td {
 }
 
 th {
-    background-color: 24563a; /* Medical blue */
+    background-color: #24563a; /* Corrected color code */
     color: #ffffff;
     text-transform: uppercase;
     font-weight: bold;
@@ -127,16 +126,6 @@ button:hover {
 /* Delete Button (Red) */
 .delete-button {
     background-color: #dc3545; /* Red for delete actions */
-}
-
-.delete-button:hover {
-    background-color: #c82333; /* Darker red on hover */
-}
-
-
-/* Delete Button */
-.delete-button {
-    background-color: #dc3545; /* Red for delete button */
     color: white;
 }
 
@@ -151,4 +140,26 @@ form {
     margin: 20px auto;
     padding: 10px;
 }
+
+
+
+
+        .content {
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+    
 </style>
