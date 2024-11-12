@@ -1,10 +1,11 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <?php include("db_connection.php"); ?>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firstcare Medical Center</title>
-    
+</head>
 <body>
     <?php
         include("style.php");
@@ -13,7 +14,7 @@
    
     <center>
         <!-- Logo Image -->
-        <img src="homepage.jfif" alt="Firstcare Medical Center Logo" class="logo">
+        <img src="images/unnamed.png" alt="Firstcare Medical Center Logo" width="500" height="600">
         
         <!-- Welcome Text -->
         <h1>Welcome to Firstcare Medical Center</h1>
@@ -21,4 +22,3 @@
     </center>
 </body>
 </html>
-

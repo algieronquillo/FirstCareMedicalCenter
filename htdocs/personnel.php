@@ -10,17 +10,14 @@
     ?>
    <center>
 
-     
     <h1>Personnel</h1>
 
-     
     <table cellpadding="5" align="center" width="80%" border="">
         <tr>
-           
             <th><h2>Fullname</h2></th>
             <th><h2>Role</h2></th>
             <th><h2>Specialty</h2></th>
-            <th><h2>location</h2></th>
+            <th><h2>Location</h2></th>
             <th><h2>Action</h2></th>
         </tr>
 
@@ -34,15 +31,13 @@
         if (mysqli_num_rows($result) > 0) {
             // Output data of each row
             while ($row = mysqli_fetch_assoc($result)) {
-       echo "<tr>"; // Start a new row
+                echo "<tr>"; // Start a new row
                 echo "<td>" . htmlspecialchars($row['lastname']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['specialty']) . "</td>";
                 echo "<td>" . htmlspecialchars($row['name']) . "</td>";
                 echo "<td>
-
                     <button><a href='?action=delete&personnel_id=" . urlencode($row['personnel_id']) . "' onclick='return confirm(\"Are you sure you want to delete this personnel?\");'>Delete</a></button>
-                    
                 </td>"; // Delete link 
                 echo "</tr>"; // Close the row
             }
@@ -54,9 +49,9 @@
 
     </center>
    <center>
-<?php
+   <?php
     // Handle delete action
-        if (isset($_GET['action']) && isset($_GET['personnel_id'])) {
+    if (isset($_GET['action']) && isset($_GET['personnel_id'])) {
         $action = trim($_GET['action']);
         $personnel_id = intval(trim($_GET['personnel_id'])); // Use intval to ensure it's an integer
         if ($action == 'delete') {
@@ -68,7 +63,7 @@
             }
         }
     }
-    ?>
+   ?>
    </center>
 
 </body>
