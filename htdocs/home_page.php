@@ -11,14 +11,16 @@
         include("style.php");
         include("menu.php");
     ?>
-   
-    <center>
-        <!-- Logo Image -->
-        <img src="images/unnamed.png" alt="Firstcare Medical Center Logo" width="500" height="600">
-        
-        <!-- Welcome Text -->
+            <center>
+            <!-- Welcome Text -->
         <h1>Welcome to Firstcare Medical Center</h1>
         <p>Your health is our priority. We offer comprehensive healthcare services to ensure the well-being of our community.</p>
-    </center>
+    
+
+
+        <!-- Logo Image -->
+        <img src="https://probable-doodle-5g4776g6pv9jhp4xv-8000.app.github.dev/htdocs/uploads/unnamed.png" alt="Firstcare Medical Center Logo" width="500" height="500">
+        </center>
+        
 </body>
 </html>

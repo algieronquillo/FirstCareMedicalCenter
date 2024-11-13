@@ -136,7 +136,7 @@ if (isset($_POST['process-upload'])) {
 </head>
 <body>
     <div class="container">
-        <h2>Upload an Image</h2>
+        <h2>Upload an Image for Medical Centers        </h2>
         <form action="upload_image.php" method="POST" enctype="multipart/form-data">
             <label for="upload_file">Choose a file:</label>
             <input type="file" name="file_upload" id="upload_file" required><br><br>

@@ -32,8 +32,23 @@
                     <td><input type="text" name="phonenumber" required></td>
                 </tr>
                 <tr>
+                    <td>Medical Center</td>
+                    <td>
+                        <select name="center_id" required>
+                            <option value="">-- SELECT A MEDICAL CENTER --</option>
+                            <?php
+                            $sql = "SELECT * FROM medicalcenter ORDER BY name";
+                            $query = mysqli_query($conn, $sql);
+                            while ($result = mysqli_fetch_assoc($query)) {
+                                echo "<option value='{$result['center_id']}'>{$result['name']} - {$result['location']}</option>";
+                            }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" name="add_patients" value="Add Patient">
+                        <button type="submit" name="assign_patient" class="button green">Assign</button>
                     </td>
                 </tr>
             </table>
@@ -41,17 +56,18 @@
 
         <?php
         // Handle form submission
-        if (isset($_POST['add_patients'])) {
+        if (isset($_POST['assign_patient'])) {
             $lastname = mysqli_real_escape_string($conn, trim($_POST['lastname']));
             $firstname = mysqli_real_escape_string($conn, trim($_POST['firstname']));
             $dateofbirth = mysqli_real_escape_string($conn, trim($_POST['dateofbirth']));
             $phonenumber = mysqli_real_escape_string($conn, trim($_POST['phonenumber']));
+            $center_id = mysqli_real_escape_string($conn, trim($_POST['center_id']));
 
-            // Update the table name if necessary
-            $sql = "INSERT INTO patients (lastname, firstname, dateofbirth, phonenumber) VALUES ('$lastname', '$firstname', '$dateofbirth', '$phonenumber')";
+            $sql = "INSERT INTO patients (lastname, firstname, dateofbirth, phonenumber, center_id) 
+                    VALUES ('$lastname', '$firstname', '$dateofbirth', '$phonenumber', '$center_id')";
 
             if (mysqli_query($conn, $sql)) {
-                echo "<script>alert('Patient has been admitted successfully.'); window.location = 'patients1.php';</script>";
+                echo "<script>alert('Patient has been admitted successfully.'); window.location = 'patients.php';</script>";
             } else {
                 echo "<script>alert('Error admitting patient: " . mysqli_error($conn) . "');</script>";
             }
