@@ -51,6 +51,7 @@
                         <button type="submit" name="assign_patient" class="button green">Assign</button>
                     </td>
                 </tr>
+                
             </table>
         </form>
 

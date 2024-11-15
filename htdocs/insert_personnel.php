@@ -35,6 +35,8 @@
                     <input type="submit" name="add_personnel" value="Add Personnel">
                 </td>
             </tr>
+
+
         </table>
     </form>
 
@@ -47,7 +49,7 @@
         $specialty = mysqli_real_escape_string($conn, trim($_POST['specialty']));
 
         // Insert personnel data into the database
-        $sql = "INSERT INTO personnel (lastname, firstname, role, specialty) VALUES ('$lastname', '$firstname', '$role', '$specialty')";
+        $sql = "INSERT INTO personnel (lastname, firstname, role, specialty,) VALUES ('$lastname', '$firstname', '$role', '$specialty')";
 
         if (mysqli_query($conn, $sql)) {
             echo "<script>alert('Personnel has been added'); window.location= 'personnel.php'; </script>";

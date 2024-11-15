@@ -9,19 +9,19 @@ include("db_connection.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Gallery</title>
     <style>
-        /* Basic gallery styling */
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .gallery img {
-            width: 200px;
-            height: auto;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-        }
-    </style>
+    /* Gallery styling */
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .gallery img {
+        width: 200px;
+        height: auto;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+</style>
 </head>
 <body>
     <h2>Image Gallery</h2>

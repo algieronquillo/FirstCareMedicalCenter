@@ -5,7 +5,13 @@ include("menu.php");
 ?>
 
 <html>
-<head><title>Personnel</title></head>
+<head>
+    <title>Personnel</title>
+
+
+
+
+</head>
 <body>
     <center>
         <h1>Personnel</h1>
@@ -24,13 +30,14 @@ include("menu.php");
                     FROM personnel 
                     INNER JOIN medicalpersonnel ON personnel.personnel_id = medicalpersonnel.personnel_id 
                     INNER JOIN medicalcenter ON medicalcenter.center_id = medicalpersonnel.center_id
-                    LEFT JOIN images ON personnel.image_id = images.id"; // Adjust column if needed
+                    LEFT JOIN images ON id = images.id"; // Adjust column if needed
 
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
-                    echo "<td><img src='" . htmlspecialchars($row['file_path']) . "' alt='Personnel Image' width='50' height='50'></td>";
+                    
+                    echo "<td><img src='" . htmlspecialchars($row['file_path']) . "'></td>";
                     echo "<td>" . htmlspecialchars($row['lastname']) . " " . htmlspecialchars($row['firstname']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['specialty']) . "</td>";
@@ -44,6 +51,14 @@ include("menu.php");
                 echo "<tr><td colspan='6' align='center'>No personnel found</td></tr>";
             }
             ?>
+
+
+
+
+
+
+
+
         </table>
 
         <?php
