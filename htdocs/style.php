@@ -1,169 +1,199 @@
 <style>
+/* General Reset */
 * {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body Styles */
 body {
-    margin: 20px;
-    background-color: #f4f8fb; /* Light, soft background for a calming effect */
-    color: #333; /* Darker text for readability */
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #f0f8ff, #e6eef8); /* Gradient background for depth */
+    color: #2c3e50; /* Dark text for readability */
+    line-height: 1.6;
+    font-size: 16px;
 }
 
-/* Header and Navigation */
+/* Header Section */
 header {
-    background-color: #2a4d69;
-    color: #fff;
-    padding: 20px;
+    background: #34495e; /* Modern dark blue */
+    color: #ecf0f1;
+    padding: 20px 0;
     text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    font-size: 36px;
-    color: black; /* Specify a color here */
-    margin-bottom: 0.5rem;
-    text-align: center;
-    padding: 10px 0;
-    padding: 14px 16px;
+header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
 }
 
+header p {
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+/* Navigation Menu */
 nav {
-    background-color: #24563a; /* Corrected color code */
-    overflow: hidden;
-    padding: 10px 0;
+    background: #2c3e50;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
+    padding: 10px 0;
 }
 
 nav li {
-    margin: 0 20px;
+    margin: 0 15px;
 }
 
 nav a {
-    color: #fff;
+    color: #ecf0f1;
     text-decoration: none;
-    font-size: 16px;
-    padding: 10px 15px;
-    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensures perfect alignment */
 }
 
 nav a:hover {
-    background-color: #5dade2; /* Slightly lighter blue on hover */
-    color: #fff;
-    border-radius: 5px;
+    background: #3498db;
+    color: #ffffff;
+    transform: scale(1.05); /* Slight scale effect for better interactivity */
 }
 
-/* Main Content Styles */
-h2 {
-    color: #ffffff; /* Specify a color here */
-    font-size: 28px;
-    margin-bottom: 1rem;
+/* Main Content Section */
+.content {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 90%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-p {
-    margin-bottom: 1rem;
-    font-size: 16px;
-    line-height: 1.6;
+.content h2 {
+    font-size: 2rem;
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+.content p {
+    font-size: 1rem;
+    color: #7f8c8d;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 /* Table Styles */
 table {
-    width: 80%;
+    width: 90%;
     margin: 20px auto;
     border-collapse: collapse;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Subtle shadow */
-    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
-    border: 1px solid #ddd;
-    padding: 12px;
+    padding: 12px 20px;
     text-align: left;
-    font-size: 15px;
+    border-bottom: 1px solid #ddd;
 }
 
 th {
-    background-color: #24563a; /* Corrected color code */
+    background: #2c3e50;
     color: #ffffff;
     text-transform: uppercase;
     font-weight: bold;
+    font-size: 0.9rem;
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9; /* Alternating row color */
+    background: #f9f9f9;
 }
 
 tr:hover {
-    background-color: #eaf4ff; /* Light blue on hover */
+    background: #f1faff;
 }
 
-/* General Button Styles */
+/* Button Styles */
 button, .delete-button {
     padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
     border: none;
-    border-radius: 4px;
-    color: #ffffff;
-    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensures text stays aligned perfectly */
 }
 
-/* Action Button (Green) */
 button {
-    background-color: #28a745; /* Green for positive actions */
+    background: #27ae60;
+    color: #ffffff;
 }
 
 button:hover {
-    background-color: #218838; /* Darker green on hover */
+    background: #1e8449;
+    transform: scale(1.05);
 }
 
-/* Delete Button (Red) */
 .delete-button {
-    background-color: #dc3545; /* Red for delete actions */
-    color: white;
+    background: #e74c3c;
+    color: #ffffff;
 }
 
 .delete-button:hover {
-    background-color: #c82333; /* Darker red on hover */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Soft shadow on hover */
+    background: #c0392b;
+    transform: scale(1.05);
 }
 
-/* Forms */
+/* Form Styles */
 form {
-    max-width: 600px;
+    max-width: 500px;
     margin: 20px auto;
-    padding: 10px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
+form input:focus, form select:focus, form textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
 
-
-        .content {
-            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 1.25rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        
-    
-
-         
-    
+/* Footer */
+footer {
+    margin-top: 20px;
+    background: #34495e;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9rem;
+}
 </style>

@@ -5,7 +5,7 @@
 <body>
     <?php
         include("style.php");
-        include("menu.php");
+        include("menu1.php");
 
     
     ?>

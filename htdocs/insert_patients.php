@@ -1,79 +1,69 @@
+<?php
+include("db_connection.php");
+
+// Initialize messages
+$successMessage = '';
+$errorMessage = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve form data
+    $firstname = trim($_POST['firstname']);
+    $lastname = trim($_POST['lastname']);
+    $dateofbirth = $_POST['dateofbirth'];
+    $phonenumber = trim($_POST['phonenumber']);
+
+    // Validate input
+    if (empty($firstname) || empty($lastname) || empty($dateofbirth) || empty($phonenumber)) {
+        $errorMessage = "All fields are required.";
+    } else {
+        // Insert data into the patients table
+        $insertQuery = "INSERT INTO patients (firstname, lastname, dateofbirth, phonenumber) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($insertQuery);
+        $stmt->bind_param("ssss", $firstname, $lastname, $dateofbirth, $phonenumber);
+
+        if ($stmt->execute()) {
+            $successMessage = "Patient successfully added!";
+        } else {
+            $errorMessage = "Error: " . $stmt->error;
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <?php include("db_connection.php"); ?>
-    <title>Admit Patients</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert New Patient</title>
+    <?php include("style.php"); ?>
 </head>
 <body>
-    <?php
-    include("style.php");
-    include("menu.php");
-    ?>
+    <?php include("menu1.php"); ?>
 
     <center>
-        <h1>Admit Patients</h1>
+        <h1>Add New Patient</h1>
+        <?php if (!empty($errorMessage)) echo "<p class='error'>$errorMessage</p>"; ?>
+        <?php if (!empty($successMessage)) echo "<p class='success'>$successMessage</p>"; ?>
 
-        <form method="POST" action="">
-            <table cellpadding="30" align="center" width="60%">
-                <tr>
-                    <td><label for="lastname">Lastname:</label></td>
-                    <td><input type="text" name="lastname" required></td>
-                </tr>
-                <tr>
-                    <td><label for="firstname">Firstname:</label></td>
-                    <td><input type="text" name="firstname" required></td>
-                </tr>
-                <tr>
-                    <td><label for="dateofbirth">Date of Birth:</label></td>
-                    <td><input type="date" name="dateofbirth" required></td>
-                </tr>
-                <tr>
-                    <td><label for="phonenumber">Phone Number:</label></td>
-                    <td><input type="text" name="phonenumber" required></td>
-                </tr>
-                <tr>
-                    <td>Medical Center</td>
-                    <td>
-                        <select name="center_id" required>
-                            <option value="">-- SELECT A MEDICAL CENTER --</option>
-                            <?php
-                            $sql = "SELECT * FROM medicalcenter ORDER BY name";
-                            $query = mysqli_query($conn, $sql);
-                            while ($result = mysqli_fetch_assoc($query)) {
-                                echo "<option value='{$result['center_id']}'>{$result['name']} - {$result['location']}</option>";
-                            }
-                            ?>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center">
-                        <button type="submit" name="assign_patient" class="button green">Assign</button>
-                    </td>
-                </tr>
-                
-            </table>
+        <form method="POST" action="insert_patients.php">
+            <label for="firstname">First Name:</label><br>
+            <input type="text" name="firstname" id="firstname" required><br><br>
+
+            <label for="lastname">Last Name:</label><br>
+            <input type="text" name="lastname" id="lastname" required><br><br>
+
+            <label for="dateofbirth">Date of Birth:</label><br>
+            <input type="date" name="dateofbirth" id="dateofbirth" required><br><br>
+
+            <label for="phonenumber">Phone Number:</label><br>
+            <input type="text" name="phonenumber" id="phonenumber" required><br><br>
+
+            <button type="submit" class="btn">Add Patient</button>
         </form>
 
-        <?php
-        // Handle form submission
-        if (isset($_POST['assign_patient'])) {
-            $lastname = mysqli_real_escape_string($conn, trim($_POST['lastname']));
-            $firstname = mysqli_real_escape_string($conn, trim($_POST['firstname']));
-            $dateofbirth = mysqli_real_escape_string($conn, trim($_POST['dateofbirth']));
-            $phonenumber = mysqli_real_escape_string($conn, trim($_POST['phonenumber']));
-            $center_id = mysqli_real_escape_string($conn, trim($_POST['center_id']));
-
-            $sql = "INSERT INTO patients (lastname, firstname, dateofbirth, phonenumber, center_id) 
-                    VALUES ('$lastname', '$firstname', '$dateofbirth', '$phonenumber', '$center_id')";
-
-            if (mysqli_query($conn, $sql)) {
-                echo "<script>alert('Patient has been admitted successfully.'); window.location = 'patients.php';</script>";
-            } else {
-                echo "<script>alert('Error admitting patient: " . mysqli_error($conn) . "');</script>";
-            }
-        }
-        ?>
+        <br>
+        <a href="patients.php" class="btn">Back to Patients List</a>
     </center>
 </body>
 </html>

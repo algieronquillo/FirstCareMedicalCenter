@@ -1,150 +1,155 @@
 <?php
 include("db_connection.php");
+include("menu1.php");
+include("style.php");
+
+$uploadDir = "uploads/gallery/";
+
+// Ensure upload directory exists
+if (!is_dir($uploadDir)) {
+    mkdir($uploadDir, 0777, true);
+}
+
+// Handle image upload for gallery
+if (isset($_POST['upload_image'])) {
+    $image = $_FILES['image'];
+    
+    $imageOriginalName = basename($image['name']);
+    $imageSize = $image['size'];
+    $imageTmpName = $image['tmp_name'];
+    $imageType = strtolower(pathinfo($imageOriginalName, PATHINFO_EXTENSION));
+
+    // Validate image type and size
+    if (!in_array($imageType, ['jpg', 'jpeg', 'png'])) {
+        $error = "Only JPG and PNG files are allowed.";
+    } elseif ($imageSize > 2 * 1024 * 1024) { // 2MB size limit
+        $error = "File size exceeds the 2MB limit.";
+    } else {
+        $targetFile = $uploadDir . uniqid() . "." . $imageType;
+
+        // Move uploaded image to the target directory
+        if (move_uploaded_file($imageTmpName, $targetFile)) {
+            // Insert image details into the gallery table
+            $query = "INSERT INTO gallery (image_name, image_path, image_type) 
+                      VALUES ('$imageOriginalName', '$targetFile', '$imageType')";
+            if (mysqli_query($conn, $query)) {
+                $success = "Image uploaded successfully!";
+            } else {
+                $error = "Error saving image details.";
+            }
+        } else {
+            $error = "Error uploading image.";
+        }
+    }
+}
 ?>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload Image</title>
-    <!-- Inline CSS for styling the image -->
+    <title>Upload Image to Gallery</title>
     <style>
-        /* Styling for the uploaded image */
-        .uploaded-img {
-            width: 50px; /* Set the width of the image */
-            height: 50px; /* Set the height of the image */
-            object-fit: cover; /* Ensures the image fits within the box without distortion */
-            border: 2px solid #ddd; /* Optional: Adds a border around the image */
-            margin-top: 5px; /* Adds some space above the image */
-        }
-
-        /* Additional styling */
         body {
             font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            color: #444;
         }
-
         .container {
-            width: 80%;
-            margin: 0 auto;
-            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-
-        .error-msg {
-            color: red;
-            font-weight: bold;
+        .message {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            color: #fff;
         }
-
-        .success-msg {
-            color: green;
-            font-weight: bold;
+        .message.error {
+            background-color: #f44336;
         }
-
-        button {
-            padding: 10px 15px;
+        .message.success {
             background-color: #4CAF50;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .form-group input[type="file"] {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
             color: white;
             border: none;
             cursor: pointer;
+            border-radius: 5px;
         }
-
         button:hover {
-            background-color: #45a049;
+            background-color: #0056b3;
         }
-
-        a {
-            text-decoration: none;
-            color: #007BFF;
+        .gallery img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
     </style>
 </head>
 <body>
 
-<?php
-include("menu.php");
-?>
-
 <div class="container">
-    <br><br>
-    <h1>Upload an Image for Medical Centers</h1>
-    <br><br>
+    <h1>Upload Image to Gallery</h1>
+
+    <!-- Display success or error messages -->
+    <?php if (isset($error)): ?>
+        <div class="message error"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+    <?php if (isset($success)): ?>
+        <div class="message success"><?= htmlspecialchars($success) ?></div>
+    <?php endif; ?>
+
+    <!-- Image Upload Form -->
     <form action="upload_image.php" method="POST" enctype="multipart/form-data">
-        <label for="upload_file">Choose a file:</label>
-        <input type="file" name="file_upload" id="upload_file" required><br><br>
-        <button type="submit" name="process-upload">Upload</button>
-        <a href="personnel.php">View personnel</a>
-    </form> 
+        <div class="form-group">
+            <label for="image">Upload Image (JPEG/PNG, max 2MB):</label>
+            <input type="file" name="image" id="image" required>
+        </div>
+        <button type="submit" name="upload_image">Upload Image</button>
+    </form>
+
+    <!-- Display Uploaded Images -->
+    <h2>Uploaded Images</h2>
+    <div class="gallery">
+        <?php
+        // Fetch and display uploaded images from the gallery table
+        $query = "SELECT * FROM gallery ORDER BY uploaded_at DESC";
+        $result = mysqli_query($conn, $query);
+        while ($row = mysqli_fetch_assoc($result)): ?>
+            <div class="image">
+                <img src="<?= htmlspecialchars($row['image_path']) ?>" alt="<?= htmlspecialchars($row['image_name']) ?>">
+                <p><?= htmlspecialchars($row['image_name']) ?></p>
+            </div>
+        <?php endwhile; ?>
+    </div>
 </div>
-
-<?php
-// Handle file upload in this script
-if (isset($_POST['process-upload'])) {
-    if (isset($_FILES['file_upload']) && $_FILES['file_upload']['error'] == UPLOAD_ERR_OK) {
-        $filename = $_FILES['file_upload']['name'];
-        $filetype = $_FILES['file_upload']['type'];
-        $tmpname = $_FILES['file_upload']['tmp_name'];
-        $filesize = $_FILES['file_upload']['size'];
-
-        // Maximum file size (2MB)
-        $maximumFileSize = 2 * 1024 * 1024; // 2MB
-
-        if ($filesize > $maximumFileSize) {
-            echo "<p class='error-msg'>File must be 2MB or smaller.</p>";
-            exit();
-        }
-
-        // Directory to store uploaded images
-        $uploadDir = 'uploads/';
-
-        // Check if the directory exists, if not create it
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true); // Creates the directory with full permissions
-        }
-
-        // Set the full path to store the uploaded file
-        $modifiedFilename = uniqid() . "_" . time() . "_" . basename($filename);
-        $uploadPath = $uploadDir . $modifiedFilename;
-
-        // Allowed file types
-        $allowedFileTypes = ['image/jpg', 'image/jpeg', 'image/png'];
-
-        if (in_array($filetype, $allowedFileTypes)) {
-            // Try moving the uploaded file to the specified directory
-            if (move_uploaded_file($tmpname, $uploadPath)) {
-                // Store the image path in the database
-                try {
-                    // Check PDO connection
-                    if ($pdo) {
-                        $stmt = $pdo->prepare("INSERT INTO images (file_path) VALUES (:file_path)");
-                        $stmt->bindParam(':file_path', $uploadPath);
-                        $stmt->execute();
-
-                        // Display the uploaded image with styling
-                        echo "<p class='success-msg'>File uploaded successfully.</p>";
-                        echo "<img src='" . $uploadPath . "' alt='Uploaded Image' class='uploaded-img'>";
-                    } else {
-                        echo "<p class='error-msg'>Database connection failed.</p>";
-                    }
-                } catch (PDOException $e) {
-                    echo "<p class='error-msg'>Error inserting data: " . $e->getMessage() . "</p>";
-                }
-            } else {
-                echo "<p class='error-msg'>Failed to upload file. Please check folder permissions.</p>";
-            }
-        } else {
-            echo "<p class='error-msg'>Invalid file type. Only JPG and PNG files are allowed.</p>";
-        }
-    } else {
-        echo "<p class='error-msg'>No file uploaded or an error occurred.</p>";
-    }
-}
-?>
 
 </body>
 </html>

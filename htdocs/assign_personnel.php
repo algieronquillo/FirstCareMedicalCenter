@@ -7,7 +7,7 @@
 <body>
     <?php
     include("style.php");
-    include("menu.php");
+    include("menu1.php");
     ?>
     <center>
         <h1>Assign Medical Center to Personnel</h1>

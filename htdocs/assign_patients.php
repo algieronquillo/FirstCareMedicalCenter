@@ -10,7 +10,7 @@ include("db_connection.php");
 <body>
 <?php
 include("style.php");
-include("menu.php");
+include("menu1.php");
 
 
 ?>
