@@ -15,7 +15,6 @@ include("db_connection.php");
 
     <center>
         <h1>Patients</h1>
-        <a href="insert_patients.php" class="btn">Insert New Patient</a>
         <br><br>
         <table class="center-table" border="1" cellspacing="0" cellpadding="10">
             <tr>
@@ -24,10 +23,10 @@ include("db_connection.php");
                 <th>Phone Number</th>
             </tr>
 
-            <?php
-            // Fetch all patients from the database
-            $patientQuery = "SELECT lastname, firstname, dateofbirth, phonenumber FROM patients";
-            $result = mysqli_query($conn, $patientQuery);
+            <<?php
+         $sql = "SELECT * FROM patients 
+                 INNER JOIN appointments ON patients.patient_id = appointments.patient_id 
+                 INNER JOIN medicalcenter ON medicalcenter.center_id = appointments.center_id"; 
 
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {

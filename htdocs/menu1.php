@@ -222,7 +222,7 @@
 <body>
 
     <!-- Title for First Care Medical -->
-    <center><div class="title">First Care Medical</div></center>
+    <center><div class="title">First Care Medical Center</div></center>
 
     <!-- Navigation Menu -->
     <nav>
@@ -242,7 +242,7 @@
                 <a href="#">Patients</a>
                 <ul class="submenu">
                     <li><a href="patients.php">View Patients</a></li>
-                    <li><a href="insert_patients.php">Insert Patients</a></li>
+                    
                     <li><a href="admit_patients.php">Admit Patients</a></li>
                 </ul>
             </li>
