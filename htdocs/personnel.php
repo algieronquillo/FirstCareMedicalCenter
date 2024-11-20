@@ -7,17 +7,12 @@ include("menu.php");
 <html>
 <head>
     <title>Personnel</title>
-
-
-
-
 </head>
 <body>
     <center>
         <h1>Personnel</h1>
         <table cellpadding="5" align="center" width="80%" border="1">
             <tr>
-                <th>Image</th>
                 <th>Fullname</th>
                 <th>Role</th>
                 <th>Specialty</th>
@@ -26,18 +21,16 @@ include("menu.php");
             </tr>
 
             <?php
-            $sql = "SELECT personnel.*, medicalpersonnel.*, medicalcenter.name as center_name, images.file_path 
+            // Updated query without the images table or its data
+            $sql = "SELECT personnel.*, medicalpersonnel.*, medicalcenter.name as center_name 
                     FROM personnel 
                     INNER JOIN medicalpersonnel ON personnel.personnel_id = medicalpersonnel.personnel_id 
-                    INNER JOIN medicalcenter ON medicalcenter.center_id = medicalpersonnel.center_id
-                    LEFT JOIN images ON id = images.id"; // Adjust column if needed
+                    INNER JOIN medicalcenter ON medicalcenter.center_id = medicalpersonnel.center_id";
 
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
-                    
-                    echo "<td><img src='" . htmlspecialchars($row['file_path']) . "'></td>";
                     echo "<td>" . htmlspecialchars($row['lastname']) . " " . htmlspecialchars($row['firstname']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['specialty']) . "</td>";
@@ -48,20 +41,13 @@ include("menu.php");
                     echo "</tr>";
                 }
             } else {
-                echo "<tr><td colspan='6' align='center'>No personnel found</td></tr>";
+                echo "<tr><td colspan='5' align='center'>No personnel found</td></tr>";
             }
             ?>
-
-
-
-
-
-
-
-
         </table>
 
         <?php
+        // Delete functionality
         if (isset($_GET['action']) && isset($_GET['personnel_id'])) {
             $action = $_GET['action'];
             $personnel_id = intval($_GET['personnel_id']);
@@ -78,4 +64,3 @@ include("menu.php");
     </center>
 </body>
 </html>
-

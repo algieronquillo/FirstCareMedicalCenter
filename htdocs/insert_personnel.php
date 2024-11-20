@@ -11,6 +11,7 @@
 
     <center>
     <h1>Insert Personnel</h1>
+    <p>inseert the paesonnel and asign to the medicalcenter, upload image</p>
 
     <form method="POST" action="insert_personnel.php">
         <table cellpadding="30" align="center" width="60%">
@@ -30,6 +31,22 @@
                 <td><label for="specialty">Specialty:</label></td>
                 <td><input type="text" name="specialty" required></td>
             </tr>
+            <tr>
+                    <td>Medical Center</td>
+                    <td>
+                        <select name="center_id" required>
+                            <option value="">-- SELECT A MEDICAL CENTER --</option>
+                            <?php
+                            $sql = "SELECT * FROM medicalcenter ORDER BY name";
+                            $query = mysqli_query($conn, $sql);
+                            while ($result = mysqli_fetch_assoc($query)) {
+                                echo "<option value='{$result['center_id']}'>{$result['name']} - {$result['location']}</option>";
+                            }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
+            
             <tr>
                 <td colspan="2" align="center">
                     <input type="submit" name="add_personnel" value="Add Personnel">

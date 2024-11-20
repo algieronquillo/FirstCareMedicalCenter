@@ -16,8 +16,8 @@ include("db_connection.php");
         gap: 10px;
     }
     .gallery img {
-        width: 200px;
-        height: auto;
+        width: 50px;
+        height: 50px;
         border: 2px solid #ccc;
         border-radius: 5px;
     }
