@@ -13,6 +13,7 @@ include("menu1.php");
         <h1>Personnel</h1>
         <table cellpadding="5" align="center" width="80%" border="1">
             <tr>
+                <th>Profile</th>
                 <th>Fullname</th>
                 <th>Role</th>
                 <th>Specialty</th>
@@ -31,16 +32,19 @@ include("menu1.php");
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
+                    echo "<td>" . htmlspecialchars($row['file_path']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['lastname']) . " " . htmlspecialchars($row['firstname']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['specialty']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['center_name']) . "</td>";
-                    echo "<td>
-                            <button><a href='?action=delete&personnel_id=" . urlencode($row['personnel_id']) . "' onclick='return confirm(\"Are you sure you want to delete this personnel?\");'>Delete</a></button>
-                          </td>";
+                    echo"<td>";
+                     echo"<a href='edit_personnel.php?action=edit&personnel_id={$row['personnel_id']}' class='button green'>Edit</a></button> "; 
+                     echo "<a href='personnel.php?action=delete&personnel_id={$row['personnel_id']}' class='button red'>Delete</a></button>";
+                     echo "</td>";  
                     echo "</tr>";
                 }
-            } else {
+                }
+                else {
                 echo "<tr><td colspan='5' align='center'>No personnel found</td></tr>";
             }
             ?>
@@ -61,6 +65,16 @@ include("menu1.php");
             }
         }
         ?>
+
+        
+<?php
+    if (isset($_POST['process_edit'])) {
+        $personnel_id = intval($_POST['personnel_id']); // Ensure personnel_id is an integer
+        echo "<script> window.location='edit_personnel.php?action=edit&personnel_id=$personnel_id'; </script>";
+    }
+?>
+
     </center>
+    
 </body>
 </html>

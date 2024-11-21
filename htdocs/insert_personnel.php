@@ -11,7 +11,6 @@
 
     <center>
     <h1>Insert Personnel</h1>
-    <p>inseert the paesonnel and asign to the medicalcenter, upload image</p>
 
     <form method="POST" action="insert_personnel.php">
         <table cellpadding="30" align="center" width="60%">
@@ -31,29 +30,31 @@
                 <td><label for="specialty">Specialty:</label></td>
                 <td><input type="text" name="specialty" required></td>
             </tr>
-            <tr>
-                    <td>Medical Center</td>
-                    <td>
-                        <select name="center_id" required>
-                            <option value="">-- SELECT A MEDICAL CENTER --</option>
-                            <?php
-                            $sql = "SELECT * FROM medicalcenter ORDER BY name";
-                            $query = mysqli_query($conn, $sql);
-                            while ($result = mysqli_fetch_assoc($query)) {
-                                echo "<option value='{$result['center_id']}'>{$result['name']} - {$result['location']}</option>";
-                            }
-                            ?>
-                        </select>
-                    </td>
-                </tr>
-            
+            <div class="container">
+    
+
+    <!-- Display success or error messages -->
+    <?php if (isset($error)): ?>
+        <div class="message error"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+    <?php if (isset($success)): ?>
+        <div class="message success"><?= htmlspecialchars($success) ?></div>
+    <?php endif; ?>
+
+    <!-- Image Upload Form -->
+    <form action="upload_image.php" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="image">Upload Image (JPEG/PNG, max 2MB):</label>
+            <input type="file" name="image" id="image" required>
+        </div>
+        
+    </form>
+            </div>
             <tr>
                 <td colspan="2" align="center">
                     <input type="submit" name="add_personnel" value="Add Personnel">
                 </td>
             </tr>
-
-
         </table>
     </form>
 
@@ -66,7 +67,8 @@
         $specialty = mysqli_real_escape_string($conn, trim($_POST['specialty']));
 
         // Insert personnel data into the database
-        $sql = "INSERT INTO personnel (lastname, firstname, role, specialty,) VALUES ('$lastname', '$firstname', '$role', '$specialty')";
+        $sql = "INSERT INTO personnel (lastname, firstname, role, specialty) 
+                VALUES ('$lastname', '$firstname', '$role', '$specialty')";
 
         if (mysqli_query($conn, $sql)) {
             echo "<script>alert('Personnel has been added'); window.location= 'personnel.php'; </script>";
@@ -77,5 +79,7 @@
     ?>
 
     </center>
+
+</div>
 </body>
 </html>

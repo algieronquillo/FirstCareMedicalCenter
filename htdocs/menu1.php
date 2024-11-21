@@ -241,7 +241,7 @@
             <li class="menu-item">
                 <a href="#">Patients</a>
                 <ul class="submenu">
-                    <li><a href="patients.php">View Patients</a></li>
+                   
                     
                     <li><a href="admit_patients.php">Admit Patients</a></li>
                 </ul>
