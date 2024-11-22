@@ -21,10 +21,10 @@ include("db_connection.php");
         
    
 
-        $name = $_GET['name'] ?? ''; // Use an empty string if 'name' is not set
+        $location = $_GET['location'] ?? ''; // Use an empty string if 'location' is not set
 
         // Fetch the medical center details
-        $course = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM medicalcenter WHERE name = '$name' "));
+        $course = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM medicalcenter WHERE name = '$location' "));
     ?>
     <center>
     <h1> Patients who sign in Medicalcenter </h1>

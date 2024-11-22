@@ -32,7 +32,6 @@
 
     <table cellpadding="15" align="center" width="70%" border="5">
         <tr>
-            <th>Medical Center</th>
             <th>Location</th>
             <th>Action</th>
             <th>Action</th>
@@ -49,7 +48,7 @@
         $location = mysqli_real_escape_string($conn, trim($_POST['location']));
 
         // Insert location data into the database
-        $sql = "INSERT INTO medicalcenter(`name`, `location`) VALUES ('$medical_center', '$location')";
+        $sql = "INSERT INTO medicalcenter(`name`, `location`) VALUES (', '$location')";
 
         if (mysqli_query($conn, $sql)) {
             
@@ -63,15 +62,14 @@
 
 
    <?php 
-$sql = "SELECT * FROM medicalcenter ORDER BY `name`";
+$sql = "SELECT * FROM medicalcenter ORDER BY `location`";
 $query = mysqli_query($conn, $sql);
 while ($result = mysqli_fetch_assoc($query)) {
     echo "<tr>";
-    echo "<td>" . htmlspecialchars($result['name']) . "</td>";
     echo "<td>" . htmlspecialchars($result['location']) . "</td>";
-    echo'<td><a href="personnel1.php?name=' . urlencode($result['name']) . '">View Personnel</a>
+    echo'<td><a href="personnel1.php?location=' . urlencode($result['location']) . '">View Personnel</a>
     </td>';
-    echo'<td><a href="patients.php?name=' . urlencode($result['name']) . '">View patients</a>
+    echo'<td><a href="patients.php?location=' . urlencode($result['location']) . '">View patients</a>
     </td>';
     echo "</tr>";
 }

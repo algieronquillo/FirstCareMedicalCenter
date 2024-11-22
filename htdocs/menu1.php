@@ -234,7 +234,6 @@
                 <ul class="submenu">
                     <li><a href="personnel.php">View Personnel</a></li>
                     <li><a href="insert_personnel.php">Insert Personnel</a></li>
-                    <li><a href="assign_personnel.php">Assign Personnel</a></li>
                 </ul>
             </li>
             <li class="menu-item">

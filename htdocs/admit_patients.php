@@ -37,10 +37,10 @@
                         <select name="center_id" required>
                             <option value="">-- SELECT A MEDICAL CENTER --</option>
                             <?php
-                            $sql = "SELECT * FROM medicalcenter ORDER BY name";
+                            $sql = "SELECT * FROM medicalcenter ORDER BY location";
                             $query = mysqli_query($conn, $sql);
                             while ($result = mysqli_fetch_assoc($query)) {
-                                echo "<option value='{$result['center_id']}'>{$result['name']} - {$result['location']}</option>";
+                                echo "<option value='{$result['center_id']}'>{$result['location']}</option>";
                             }
                             ?>
                         </select>
