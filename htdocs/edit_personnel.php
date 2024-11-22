@@ -64,7 +64,7 @@ include("menu1.php");
                     WHERE personnel_id = $old_personnel_id";
 
             if (mysqli_query($conn, $sql)) {
-                echo "<script>alert('Personnel updated successfully'); window.location='personnel_list.php';</script>";
+                echo "<script>alert('Personnel updated successfully'); window.location='personnel.php';</script>";
             } else {
                 echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
             }

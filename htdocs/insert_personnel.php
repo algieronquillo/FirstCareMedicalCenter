@@ -47,6 +47,26 @@
             <label for="image">Upload Image (JPEG/PNG, max 2MB):</label>
             <input type="file" name="image" id="image" required>
         </div>
+
+        <tr>
+                    <td>Medical Center</td>
+                    <td>
+                        <select name="medicalcenter">
+                            <option value=""> -- SELECT A MEDICAL CENTER --</option>
+                            <?php
+                            $sql = "SELECT * FROM medicalcenter ORDER BY name";
+                            $query = mysqli_query($conn, $sql);
+                            if (!$query) {
+                                echo "Error: " . mysqli_error($conn);
+                            } else {
+                                while ($result = mysqli_fetch_assoc($query)) {
+                                    echo "<option value='{$result['center_id']}'>{$result['name']}, {$result['location']}</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+                    </td>
+                </tr>
         
     </form>
             </div>

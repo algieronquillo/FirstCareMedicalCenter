@@ -76,7 +76,7 @@ include("style.php");
         }
 
         a:hover {
-            color: #0056b3;
+            color: #3498db;
         }
     </style>
 </head>

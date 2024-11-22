@@ -4,13 +4,15 @@
     <?php include("db_connection.php"); ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firstcare Medical Center</title>
-</head>
-<body>
+    
+
     <?php
         include("style.php");
         include("menu1.php");
     ?>
+</head>
+<body>
+<title>Firstcare Medical Center</title>
             <center>
             <!-- Welcome Text -->
         <h1>Welcome to Firstcare Medical Center</h1>

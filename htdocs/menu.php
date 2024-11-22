@@ -10,4 +10,6 @@
         <li><a href="assign_personnel.php">Assign personnel into medicalcenter</a></li>   
         <li><a href="upload_image.php">Upload Image</a></li>
         <li><a href="gallery.php">Gallery</a></li>
+    </ul>
 </nav>
+</div>

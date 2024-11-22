@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First Care Medical Center</title>
+    
     <link rel="stylesheet" href="style.css">
     <style>
         /* General Reset */
@@ -20,7 +20,7 @@
             padding: 0;
             background: linear-gradient(to bottom right, #f0f8ff, #e6eef8); /* Gradient background for depth */
             color: #2c3e50; /* Dark text for readability */
-            line-height: 1.6;
+            line-height: 1.2;
             font-size: 16px;
         }
 
@@ -50,7 +50,7 @@
             padding: 10px 0;
             display: flex;
             justify-content: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.0);
         }
 
         .menu {
@@ -107,18 +107,18 @@
             font-weight: bold;
             margin-top: 50px;
             padding: 20px;
-            background: linear-gradient(90deg, #D4A373, #F5B041); /* Gradient background for depth */
+            background: linear-gradient(90deg, #6a994e, #6a994e); /* Gradient background for depth */
             border-radius: 8px;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 5px rgba(0, 0, 0, 0.8);
             transition: all 0.3s ease;
             text-transform: uppercase; /* Make the text more prominent */
         }
 
         .title:hover {
             color: #fff;
-            background: linear-gradient(90deg, #F5B041, #D4A373);
-            text-shadow: 0px 0px 10px rgba(212, 163, 115, 0.8), 0px 0px 20px rgba(255, 163, 0, 0.5);
+            background: linear-gradient(90deg, #6a994e, #6a994e);
+            text-shadow: 0px 0px 10px rgb(0, 0, 0, 0.5), 0px 0px 0px rgba(05, 100, 0, 0.5);
             transform: translateY(-5px);
         }
 
@@ -221,8 +221,7 @@
 </head>
 <body>
 
-    <!-- Title for First Care Medical -->
-    <center><div class="title">First Care Medical Center</div></center>
+
 
     <!-- Navigation Menu -->
     <nav>
@@ -261,6 +260,7 @@
             </li>
         </ul>
     </nav>
-
+    <!-- Title for First Care Medical -->
+    <center><div class="title">First Care Medical Center</div></center>
 </body>
 </html>
