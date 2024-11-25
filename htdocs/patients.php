@@ -24,7 +24,7 @@ include("db_connection.php");
         $location = $_GET['location'] ?? ''; // Use an empty string if 'location' is not set
 
         // Fetch the medical center details
-        $course = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM medicalcenter WHERE name = '$location' "));
+        $course = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM medicalcenter WHERE center_id = '$location' "));
     ?>
     <center>
     <h1> Patients who sign in Medicalcenter </h1>
@@ -43,7 +43,7 @@ include("db_connection.php");
          $sql = "SELECT * FROM patients 
                  INNER JOIN appointments ON patients.patient_id = appointments.patient_id 
                  INNER JOIN medicalcenter ON medicalcenter.center_id = appointments.center_id 
-                 WHERE medicalcenter.name = '$name'"; // Ensure you filter by center_id
+                 WHERE medicalcenter.location = '$location'"; // Ensure you filter by center_id
                   $result = mysqli_query($conn, $sql);
         $query = mysqli_query($conn, $sql);
         if (!$query) {
