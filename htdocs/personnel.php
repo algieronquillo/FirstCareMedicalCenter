@@ -12,7 +12,6 @@ include("menu1.php");
     <center>
         <h1>Personnel</h1>
 
-
         <table cellpadding="5" align="center" width="80%" border="1">
             <tr>
                 <th>Profile</th>
@@ -30,9 +29,15 @@ include("menu1.php");
 
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
+                    // Check if profile_image is not null, if it is, use a default image
+                    $profile_image = !empty($row['profile_image']) ? htmlspecialchars($row['profile_image']) : 'uploads/default_image.jpg';
+
+                    // Combine firstname and lastname to display as Fullname
+                    $fullname = htmlspecialchars($row['firstname'] . ' ' . $row['lastname']);
+
                     echo "<tr>";
-                    echo "<td><img src='" . htmlspecialchars($row['profile_image']) . "' alt='Profile' width='100'></td>";
-                    echo "<td>" . htmlspecialchars($row['fullname']) . "</td>";
+                    echo "<td><img src='$profile_image' alt='Profile' width='100'></td>";
+                    echo "<td>$fullname</td>";
                     echo "<td>" . htmlspecialchars($row['role']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['specialty']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['location']) . "</td>";
@@ -51,7 +56,8 @@ include("menu1.php");
         <?php
         // Add Personnel Functionality
         if (isset($_POST['add_personnel'])) {
-            $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
+            $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+            $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
             $role = mysqli_real_escape_string($conn, $_POST['role']);
             $specialty = mysqli_real_escape_string($conn, $_POST['specialty']);
             $location = mysqli_real_escape_string($conn, $_POST['location']);
@@ -61,8 +67,8 @@ include("menu1.php");
 
             // Move the uploaded file
             if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $target_file)) {
-                $sql = "INSERT INTO personnel (profile_image, fullname, role, specialty, location) 
-                        VALUES ('$target_file', '$fullname', '$role', '$specialty', '$location')";
+                $sql = "INSERT INTO personnel (profile_image, firstname, lastname, role, specialty, location) 
+                        VALUES ('$target_file', '$firstname', '$lastname', '$role', '$specialty', '$location')";
                 if (mysqli_query($conn, $sql)) {
                     echo "<script>alert('Personnel added successfully!'); window.location='personnel.php';</script>";
                 } else {
@@ -95,3 +101,4 @@ include("menu1.php");
     </center>
 </body>
 </html>
+

@@ -250,16 +250,13 @@
                     <li><a href="location.php">View Location</a></li>
                 </ul>
             </li>
-            <li class="menu-item">
-                <a href="#">Gallery</a>
-                <ul class="submenu">
-                    <li><a href="upload_image.php">Upload Images</a></li>
-                    <li><a href="gallery.php">View Gallery</a></li>
-                </ul>
-            </li>
+            
         </ul>
     </nav>
+    
     <!-- Title for First Care Medical -->
     <center><div class="title">First Care Medical Center</div></center>
+
+    <br> <br>
 </body>
 </html>

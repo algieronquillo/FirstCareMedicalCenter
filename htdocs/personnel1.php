@@ -36,6 +36,7 @@
             while ($result = mysqli_fetch_assoc($query)) {
                 echo "<tr>";
                 // Check if the value is null before using htmlspecialchars
+                echo "<td><img src='" . htmlspecialchars($row['profile_image']) . "' alt='Profile' width='100'></td>";
                 echo "<td>" . htmlspecialchars($result["lastname"] ?? '') . "</td>";
                 echo "<td>" . htmlspecialchars($result['role'] ?? '') . "</td>";
                 echo "<td>" . htmlspecialchars($result['location'] ?? '') . "</td>";

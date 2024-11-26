@@ -37,6 +37,7 @@
                         <select name="center_id" required>
                             <option value="">-- SELECT A MEDICAL CENTER --</option>
                             <?php
+                            // Fetch the medical centers from the database
                             $sql = "SELECT * FROM medicalcenter ORDER BY location";
                             $query = mysqli_query($conn, $sql);
                             while ($result = mysqli_fetch_assoc($query)) {
@@ -72,11 +73,8 @@
                 exit;
             }
 
-            // Generate full name
-            $fullname = $lastname . ', ' . $firstname;
-
             // Handle image upload
-            $profile_image = 'default_image.jpg'; // Default image
+            $profile_image = 'default_image.jpg'; // Default image if no image is uploaded
             if (!empty($_FILES['profile_image']['name'])) {
                 $target_dir = "uploads/";
                 $target_file = $target_dir . basename($_FILES["profile_image"]["name"]);
@@ -87,10 +85,10 @@
                     if (move_uploaded_file($_FILES["profile_image"]["tmp_name"], $target_file)) {
                         $profile_image = mysqli_real_escape_string($conn, $target_file);
                     } else {
-                        echo "<script>alert('Error uploading image. Using default.');</script>";
+                        echo "<script>alert('Error uploading image. Using default image.');</script>";
                     }
                 } else {
-                    echo "<script>alert('Invalid image format. Only JPG and PNG allowed. Using default.');</script>";
+                    echo "<script>alert('Invalid image format. Only JPG and PNG allowed. Using default image.');</script>";
                 }
             }
 
@@ -101,9 +99,9 @@
                 ? mysqli_fetch_assoc($location_result)['location']
                 : 'Unknown Location';
 
-            // Insert data into personnel table
-            $sql = "INSERT INTO personnel (fullname, lastname, firstname, role, specialty, medicalcenter_id, location, profile_image) 
-                    VALUES ('$fullname', '$lastname', '$firstname', '$role', '$specialty', '$center_id', '$location', '$profile_image')";
+            // Insert data into personnel table (without fullname)
+            $sql = "INSERT INTO personnel (lastname, firstname, role, specialty, medicalcenter_id, location, profile_image) 
+                    VALUES ('$lastname', '$firstname', '$role', '$specialty', '$center_id', '$location', '$profile_image')";
 
             if (mysqli_query($conn, $sql)) {
                 echo "<script>alert('Personnel has been added successfully'); window.location= 'personnel.php';</script>";
@@ -115,3 +113,4 @@
     </center>
 </body>
 </html>
+
